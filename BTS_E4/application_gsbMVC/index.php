@@ -10,6 +10,12 @@ if(!isset($_REQUEST['uc']) || !$estConnecte || !estConnecte_comptable){
      $_REQUEST['uc'] = 'connexion';
 }	 
 $uc = $_REQUEST['uc'];
+if (isset($_SESSION['idVisiteur'])) {
+	$_REQUEST['uc'] = 'etatFrais';
+}
+else {
+	$_REQUEST['uc'] = 'gererFrais';
+}
 switch($uc){
 	case 'connexion':{
 		include("controleurs/c_connexion.php");break;
