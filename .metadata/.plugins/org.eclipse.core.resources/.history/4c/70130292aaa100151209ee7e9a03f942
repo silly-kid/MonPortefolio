@@ -6,7 +6,7 @@ session_start();
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
 $estConnecte_comptable = estConnecte_comptable();
-if(!isset($_REQUEST['uc']) && !$estConnecte && !$estConnecte_comptable){
+if(!isset($_REQUEST['uc']) && !$estConnecte && !estConnecte_comptable){
      $_REQUEST['uc'] = 'connexion';
 }	 
 
