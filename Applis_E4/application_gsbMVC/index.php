@@ -9,10 +9,13 @@ $estConnecte_comptable = estConnecte_comptable();
 if(!isset($_REQUEST['uc']) && !$estConnecte && !$estConnecte_comptable){
      $_REQUEST['uc'] = 'connexion';
 }	 
-
+else if (isset($_REQUEST['uc']) && $_REQUEST['action'] = "valideConnexion"){
+	$_REQUEST['uc'] = 'connexion';
+}
 else if (isset($_SESSION['idVisiteur'])) {
 	$_REQUEST['uc'] = 'etatFrais';
 }
+
 else {
 	$_REQUEST['uc'] = 'gererFrais';
 }
