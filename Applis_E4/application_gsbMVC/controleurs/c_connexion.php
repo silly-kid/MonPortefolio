@@ -26,6 +26,8 @@ switch($action){
 			$prenom = $visiteur['prenom'];
 			connecter($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
+			include("vues/v_ajoutFrais.php");
+			//include("vues/v_etatFrais.php");
 		}
 		else if(is_array( $comptable)){
 			$id = $comptable['id'];
