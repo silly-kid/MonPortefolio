@@ -14,10 +14,11 @@ else if (isset($_REQUEST['uc']) && $_REQUEST['action'] = "valideConnexion"){
 }
 else if (isset($_SESSION['idVisiteur'])) {
 	$_REQUEST['uc'] = 'etatFrais';
+	$_REQUEST['uc'] = 'gererFrais';
 }
 
 else {
-	$_REQUEST['uc'] = 'gererFrais';
+	$_REQUEST['uc'] = NULL;
 }
 $uc = $_REQUEST['uc'];
 switch($uc){

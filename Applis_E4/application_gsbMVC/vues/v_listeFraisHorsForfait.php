@@ -9,7 +9,7 @@
                 <th class="action">&nbsp;</th>              
              </tr>
           
-    <?php    
+    <?php   
 	    foreach( $lesFraisHorsForfait as $unFraisHorsForfait) 
 		{
 			$libelle = $unFraisHorsForfait['libelle'];
