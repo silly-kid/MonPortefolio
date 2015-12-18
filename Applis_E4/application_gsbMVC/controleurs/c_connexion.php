@@ -9,12 +9,10 @@ switch($action){
 		break;
 	}
 	case 'valideConnexion':{
-		$login = $_REQUEST['login'];
+		$login = $_POST['login'];
 		$mdp = $_REQUEST['mdp'];
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		$comptable = $pdo->getInfosComptable($login, $mdp);
-		//var_dump($visiteur);
-		//var_dump($comptable);
 		if ($comptable == FALSE && $visiteur == FALSE){
 			ajouterErreur("Login ou mot de passe visiteur ou comptable incorrect");
 			include("vues/v_erreurs.php");
@@ -27,7 +25,9 @@ switch($action){
 			connecter($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
 			include("vues/v_listeMois.php");
+			include("vues/v_ajoutFrais.php");
 			include("vues/v_listeFraisHorsForfait.php");
+			//include("vues/v_etatFrais.php");
 		}
 		else if(is_array( $comptable)){
 			$id = $comptable['id'];

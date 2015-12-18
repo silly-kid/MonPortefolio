@@ -2,10 +2,13 @@
 require_once("include/fct.inc.php");
 require_once ("include/class.pdogsb.inc.php");
 include("vues/v_entete.php") ;
-session_start();
-$pdo = PdoGsb::getPdoGsb();
-$estConnecte = estConnecte();
-$estConnecte_comptable = estConnecte_comptable();
+session_start();//crée une session ou restaure celle trouvée sur le serveur.
+$pdo = PdoGsb::getPdoGsb();//fonction dans class.pdogsb.
+$estConnecte = estConnecte();//Teste si un quelconque visiteur est connecté. retourne V ou F.
+$estConnecte_comptable = estConnecte_comptable();//Teste si un quelconque comptable est connecté.
+/*isset — Détermine si une variable est définie et est différente de NULL.
+$_REQUEST fait partie des variables superglobales de PHP. 
+Elle permet de récupérer des variables fournies au script par n'importe quel mécanisme d'entrée.*/
 if(!isset($_REQUEST['uc']) && !$estConnecte && !$estConnecte_comptable){
      $_REQUEST['uc'] = 'connexion';
 }	 
@@ -26,7 +29,8 @@ switch($uc){
 		include("controleurs/c_connexion.php");break;
 	}
 	case 'gererFrais' :{
-		include("controleurs/c_gererFrais.php");break;
+		include("controleurs/c_gererFrais.php");
+		//include("controleurs/c_etatFrais.php");break;
 	}
 	case 'etatFrais' :{
 		include("controleurs/c_etatFrais.php");break; 
