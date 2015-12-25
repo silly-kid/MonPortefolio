@@ -1,7 +1,9 @@
 ﻿<?php
+
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
 }
+
 $action = $_REQUEST['action'];
 switch($action){
 	case 'demandeConnexion':{
@@ -9,9 +11,9 @@ switch($action){
 		break;
 	}
 	case 'valideConnexion':{
-		$login = $_POST['login'];
+		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
-		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
+		$visiteur = $pdo->getInfosVisiteur($login, $mdp);
 		$comptable = $pdo->getInfosComptable($login, $mdp);
 		if ($comptable == FALSE && $visiteur == FALSE){
 			ajouterErreur("Login ou mot de passe visiteur ou comptable incorrect");
@@ -24,18 +26,21 @@ switch($action){
 			$prenom = $visiteur['prenom'];
 			connecter($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
-			include("vues/v_listeMois.php");
-			include("vues/v_ajoutFrais.php");
-			include("vues/v_listeFraisHorsForfait.php");
 			//include("vues/v_etatFrais.php");
+			
 		}
 		else if(is_array( $comptable)){
 			$id = $comptable['id'];
 			$nom = $comptable['nom'];
 			$prenom = $comptable['prenom'];
 			connecter_comptable($id,$nom,$prenom);
-			include("vues/v_sommaire_comptable.php");
+			include("vues/v_sommaire.php");
 		}
+		break;
+	}
+	case 'deconnexion':{
+		session_destroy();
+		header("Location: index.php");
 		break;
 	}
 	default :{
