@@ -1,36 +1,30 @@
 <?php
+/**
+ * Inclus "vues/v_sommaire.php"
+ *
+ * Affichage de vue du sommaire :
+ * - Visiteur 'nom' 'prenom'
+ * - Saisie fiche de frais
+ * - Mes fiches de frais
+ * - Déconnexion
+ */
 include("vues/v_sommaire.php");
 
-
-$idVisiteur = estConnecte();//$_SESSION['idVisiteur'];
+// Récupération des informations nécessaires
+$idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
 $action = $_REQUEST['action'];
-
-$lesMois = array();
-$lesMois[1] = array('value'=> "01", 'name' => 'de Janvier');
-$lesMois[] = array('value'=> "02", 'name' => 'de Février');
-$lesMois[] = array('value'=> "03", 'name' => 'de Mars');
-$lesMois[] = array('value'=> "04", 'name' => 'd\'Avril');
-$lesMois[] = array('value'=> "05", 'name' => 'de Mai');
-$lesMois[] = array('value'=> "06", 'name' => 'de Juin');
-$lesMois[] = array('value'=> "07", 'name' => 'de Juillet');
-$lesMois[] = array('value'=> "08", 'name' => 'd\'Août');
-$lesMois[] = array('value'=> "09", 'name' => 'de Septembre');
-$lesMois[] = array('value'=> "10", 'name' => 'd\'Octobre');
-$lesMois[] = array('value'=> "11", 'name' => 'de Novembre');
-$lesMois[] = array('value'=> "12", 'name' => 'de Décembre');
-
-$numMois = $lesMois[date('n')]['name'];
-
 switch($action){
+	// Création de la nouvelle fiche de frais si premier frais du mois en cours
 	case 'saisirFrais':{
 		if($pdo->estPremierFraisMois($idVisiteur,$mois)){
 			$pdo->creeNouvellesLignesFrais($idVisiteur,$mois);
 		}
 		break;
 	}
+	// Mise à jour de la fiche de frais
 	case 'validerMajFraisForfait':{
 		$lesFrais = $_REQUEST['lesFrais'];
 		if(lesQteFraisValides($lesFrais)){
@@ -42,6 +36,7 @@ switch($action){
 		}
 	  break;
 	}
+	// Validation de la ligne de frais hors forfait après contrôle des erreurs
 	case 'validerCreationFrais':{
 		$dateFrais = $_REQUEST['dateFrais'];
 		$dateFrais = dateAnglaisVersFrancais($dateFrais);
@@ -56,6 +51,7 @@ switch($action){
 		}
 		break;
 	}
+	// Suppression du frais sélectionné
 	case 'supprimerFrais':{
 		$idFrais = $_REQUEST['idFrais'];
 	    $pdo->supprimerFraisHorsForfait($idFrais);
@@ -64,6 +60,19 @@ switch($action){
 }
 $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
 $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
+/**
+ * Inclus "vues/v_listeFraisForfait.php"
+ *
+ * Affiche la vue concernant la liste des frais forfaitisés de la fiche de frais du
+ * mois en cours
+ */
 include("vues/v_listeFraisForfait.php");
+/**
+ * Inclus "vues/v_listeFraisHorsForfait.php"
+ *
+ * Affiche la vue concernant la liste des frais hors forfaits de la fiche de frais du
+ * mois en cours
+ */
+include("vues/v_listeFraisHorsForfait.php");
 
 ?>

@@ -32,6 +32,10 @@ else if (isset($_SESSION['idVisiteur'])) {
 	$_REQUEST['uc'] = 'etatFrais';
 	$_REQUEST['uc'] = 'gererFrais';
 }
+else if (isset($_SESSION['idComptable'])) {
+	$_REQUEST['uc'] = 'validFrais';
+	$_RESQUEST['uc'] = 'suivreFiche';
+}
 /*sinon uc = null*/
 else {
 	$_REQUEST['uc'] = NULL;
@@ -53,8 +57,13 @@ switch($uc){
 		include("controleurs/c_etatFrais.php");break;
 	}
 	case 'validFrais': {
-		// Inclure le contrôleur "c_validFrais.php"
+	    //inclure le contrôleur "c_validFrais.php"
 		include("controleurs/c_validFrais.php");break;
+	}
+	case 'suivreFiche' :{
+		
+		include("controleurs_test/c_suivreFiche.php");
+		break;
 	}
 }
 // Inclure la vue "v_pied.php"
