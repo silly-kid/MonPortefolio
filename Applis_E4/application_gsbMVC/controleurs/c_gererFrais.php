@@ -15,6 +15,13 @@ $idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));
 $numAnnee =substr( $mois,0,4);
 $numMois =substr( $mois,4,2);
+
+
+//condition rajouté a cause de l'erreur 
+if(!isset($_REQUEST['action'])){
+	$_REQUEST['action'] = 'demandeConnexion';
+}
+
 $action = $_REQUEST['action'];
 switch($action){
 	// Création de la nouvelle fiche de frais si premier frais du mois en cours

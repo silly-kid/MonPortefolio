@@ -22,7 +22,7 @@ switch($action){
 		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
 		$visiteur = $pdo->getInfosVisiteur($login, $mdp);
-		$comptable = $pdo->getInfosComptable($login, $mdp);
+		$comptable = $pdo ->getInfosComptable($login, $mdp);
 		// Connection échouée
 		if ($comptable == FALSE && $visiteur == FALSE){
 			ajouterErreur("Login ou mot de passe visiteur ou comptable incorrect");

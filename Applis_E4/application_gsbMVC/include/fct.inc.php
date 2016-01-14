@@ -31,6 +31,7 @@ function connecter($id,$nom,$prenom){
 	$_SESSION['idVisiteur']= $id; 
 	$_SESSION['nom']= $nom;
 	$_SESSION['prenom']= $prenom;
+	
 }
 /**
  * Enregistre dans une variable session les infos d'un comptable
