@@ -13,6 +13,10 @@
 function estConnecte(){
   		return isset($_SESSION['idVisiteur']);
 	}
+//fonction rajouté test 
+function estConnecteComptable(){
+		return isset($_SESSION['idComptable']);
+}
 /**
  * Enregistre dans une variable session les infos d'un visiteur
  

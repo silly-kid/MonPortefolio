@@ -6,8 +6,10 @@ include("vues/v_entete.php") ;
 session_start();
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
+$estConnecteComptable = estConnecteComptable(); // rajouté
 
-if(!isset($_REQUEST['uc']) || !$estConnecte){
+//if(!isset($_REQUEST['uc']) || !$estConnecte){
+if(!isset($_REQUEST['uc']) || !$estConnecte && !$estConnecte_comptable){	
      $_REQUEST['uc'] = 'connexion';
 }	
 
