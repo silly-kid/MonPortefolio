@@ -31,7 +31,7 @@ switch($action){
 			$id = $comptable['id'];
 			$nom =  $comptable['nom'];
 			$prenom = $comptable['prenom'];
-			connecter($id,$nom,$prenom);
+			connecterComptable($id,$nom,$prenom);
 			include("vues/v_sommaire.php");
 		}
 		break;
