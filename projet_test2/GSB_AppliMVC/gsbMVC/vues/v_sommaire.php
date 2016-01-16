@@ -8,7 +8,7 @@
     
       </div>  
         <ul id="menuList">
-        	<?php if(isset($_SESSION['idVisiteur'])) {?>
+        	<?php  if($_SESSION['statut'] == "visiteur"){?>
 			<li >
 				  Visiteur :<br>
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
@@ -22,7 +22,7 @@
  	   <li class="smenu">
               <a href="index.php?uc=connexion&action=deconnexion" title="Se déconnecter">Déconnexion</a>
            </li>
-           <?php }else if(isset($_SESSION['idComptable'])) {?>
+           <?php }else{?>
            <li >
 				  Comptable :<br>
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>

@@ -53,17 +53,11 @@ class PdoGsb{
  * @param $mdp
  * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 */
+	
 	public function getInfosVisiteur($login, $mdp){
-		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur 
+		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom, visiteur.statut as statut
+		from visiteur
 		where visiteur.login='$login' and visiteur.mdp='$mdp'";
-		$rs = PdoGsb::$monPdo->query($req);
-		$ligne = $rs->fetch();
-		return $ligne;
-	}
-	// nouvelle fonction
-	public function getInfosComptable($login, $mdp){
-		$req = "select comptable.id as id, comptable.nom as nom, comptable.prenom as prenom from comptable
-				where comptable.login='$login' and comptable.mdp='$mdp'";
 		$rs = PdoGsb::$monPdo->query($req);
 		$ligne = $rs->fetch();
 		return $ligne;
@@ -80,6 +74,7 @@ class PdoGsb{
  * @param $mois sous la forme aaaamm
  * @return tous les champs des lignes de frais hors forfait sous la forme d'un tableau associatif 
 */
+	
 	public function getLesFraisHorsForfait($idVisiteur,$mois){
 	    $req = "select * from lignefraishorsforfait where lignefraishorsforfait.idvisiteur ='$idVisiteur' 
 		and lignefraishorsforfait.mois = '$mois' ";	

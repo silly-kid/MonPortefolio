@@ -6,10 +6,8 @@ include("vues/v_entete.php") ;
 session_start();
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = estConnecte();
-$estConnecteComptable = estConnecteComptable(); // rajouté
 
-//if(!isset($_REQUEST['uc']) || !$estConnecte){
-if(!isset($_REQUEST['uc']) || !$estConnecte && !$estConnecte_comptable){	
+if(!isset($_REQUEST['uc']) || !$estConnecte){
      $_REQUEST['uc'] = 'connexion';
 }	
 
@@ -24,6 +22,12 @@ switch($uc){
 	}
 	case 'etatFrais' :{
 		include("controleurs/c_etatFrais.php");break; 
+	}
+	case 'validerFrais': {
+		include("controleurs/c_validFrais.php");break;
+	}
+	case 'suivreFiche' :{
+		include("controleurs_test/c_suivreFiche.php");break;
 	}
 }
 include("vues/v_pied.php") ;

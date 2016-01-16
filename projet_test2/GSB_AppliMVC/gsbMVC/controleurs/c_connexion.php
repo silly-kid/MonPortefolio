@@ -12,9 +12,7 @@ switch($action){
 		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
-		$comptable = $pdo->getInfosComptable($login,$mdp);// nouvelle fonction 
-		//condition modifié
-		if(!is_array( $visiteur)&&(!is_array( $comptable))){
+		if(!is_array( $visiteur)) {
 			ajouterErreur("Login ou mot de passe incorrect");
 			include("vues/v_erreurs.php");
 			include("vues/v_connexion.php");
@@ -23,15 +21,8 @@ switch($action){
 			$id = $visiteur['id'];
 			$nom =  $visiteur['nom'];
 			$prenom = $visiteur['prenom'];
-			connecter($id,$nom,$prenom);
-			include("vues/v_sommaire.php");
-		}
-		//condition rajouté
-		else if(is_array( $comptable)){
-			$id = $comptable['id'];
-			$nom =  $comptable['nom'];
-			$prenom = $comptable['prenom'];
-			connecterComptable($id,$nom,$prenom);
+			$statut = $visiteur['statut'];
+			connecter($id,$nom,$prenom,$statut);
 			include("vues/v_sommaire.php");
 		}
 		break;
