@@ -7,7 +7,11 @@ switch ($action) {
 	case "voirEtatFrais":
 		$idVisiteur = $_POST['lstVisiteur'];
 		$_SESSION['idVisiteur'] = $idVisiteur;
+<<<<<<< HEAD
 		$leMois = $_POST['LstMois'];
+=======
+		$leMois = $_POST['lstMois'];
+>>>>>>> parent of 543c983... Revert "acienne applis supprimé + nouveau projet test PPE : ajout controleur comptable + vue"
 		$_SESSION['leMois'] = $leMois;
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
 		$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
