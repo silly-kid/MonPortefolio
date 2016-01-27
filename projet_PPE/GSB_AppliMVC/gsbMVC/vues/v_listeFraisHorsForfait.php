@@ -9,10 +9,7 @@
                 <th class="action">&nbsp;</th>              
              </tr>
           
-    <?php
-    	$idVisiteur = estConnecte();//ajouté
-    	$mois = getMois(date("d/m/Y"));//ajouté
-    	$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);//ajouté
+    <?php    
 	    foreach( $lesFraisHorsForfait as $unFraisHorsForfait) 
 		{
 			$libelle = $unFraisHorsForfait['libelle'];

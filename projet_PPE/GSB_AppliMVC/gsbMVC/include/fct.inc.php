@@ -11,15 +11,8 @@
  * @return vrai ou faux 
  */
 function estConnecte(){
-  return isset($_SESSION['idVisiteur']);
-}
-/**
- * Teste si un quelconque comptable est connecté
- * @return vrai ou faux 
- */
-function estConnecte_comptable(){
-	return isset($_SESSION['idComptable']);
-}
+  		return isset($_SESSION['idVisiteur']);
+	}
 /**
  * Enregistre dans une variable session les infos d'un visiteur
  
@@ -27,23 +20,16 @@ function estConnecte_comptable(){
  * @param $nom
  * @param $prenom
  */
-function connecter($id,$nom,$prenom){
-	$_SESSION['idVisiteur']= $id; 
-	$_SESSION['nom']= $nom;
-	$_SESSION['prenom']= $prenom;
-	
-}
-/**
- * Enregistre dans une variable session les infos d'un comptable
- 
- * @param $id 
- * @param $nom
- * @param $prenom
- */
-function connecter_comptable($id,$nom,$prenom){
-	$_SESSION['idComptable']=$id;
-	$_SESSION['nom']=$nom;
-	$_SESSION['prenom']=$prenom;
+function connecter($id,$nom,$prenom,$statut){
+		$_SESSION['idVisiteur']= $id; 
+		$_SESSION['nom']= $nom;
+		$_SESSION['prenom']= $prenom;
+		$_SESSION['statut']= $statut;
+	}
+function connecterComptable($id,$nom,$prenom){
+		$_SESSION['idComptable']=$id;
+		$_SESSION['nom']= $nom;
+		$_SESSION['prenom']= $prenom;
 }
 /**
  * Détruit la session active
@@ -218,5 +204,24 @@ function nbErreurs(){
 	else{
 	   return count($_REQUEST['erreurs']);
 	}
+	
+function getSixDernierMois() {
+	$mois = date(m) + 1;
+	$annee = date(Y);
+	$tabMois = array();
+	for ($i = 6; $i > 0; $i--) {
+		$mois -= 1;
+		if ($mois < 1) {
+			$annee -= 1;
+			$mois = 12;
+		}
+		if (strlen($mois) < 2) {
+			$mois = "0" . $mois;
+		}
+		$tabMois[] = $annee. $mois;
+	}
+	return $tabMois;
+}
+
 }
 ?>
