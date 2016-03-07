@@ -224,4 +224,5 @@ function getSixDernierMois() {
 	return $taleaubMois;
 }
 
+
 ?>

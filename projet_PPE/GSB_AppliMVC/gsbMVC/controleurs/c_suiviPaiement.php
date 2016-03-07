@@ -1,10 +1,11 @@
 <?php
-
-
 include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
+echo $action;
 $lesFichesFrais = $pdo->getFichesFraisValidees();
+//echo $lesFichesFrais;
 include("vues/v_lstFicheFrais.php");
+
 switch ($action) {
 	case 'voirFicheFrais':
 		$idEtMois = explode("/", $_POST['lstFicheFrais']);
@@ -33,6 +34,7 @@ switch ($action) {
 			include("vues/v_etatFrais.php");
 		}
 		break;
+		
 	case 'remboursement':
 		$idVisiteur = $_SESSION['idVisiteur'];
 		$mois = $_SESSION['leMois'];

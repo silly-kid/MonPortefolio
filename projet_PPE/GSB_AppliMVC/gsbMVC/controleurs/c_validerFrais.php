@@ -1,19 +1,71 @@
 <?php
 include('vues/v_sommaire.php');
 $action = $_REQUEST['action'];
+$idVisiteur = $_SESSION['idVisiteur'];
+
+echo $action;
 $tabVisiteurs = $pdo->getLesVisiteurs();
-include ('vues/v_listeVisiteur.php');
+
+//$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
+//$lesCles = array_keys( $lesMois );
+//$moisASelectionner = $lesCles[0];
+
+
+//include ('vues/v_listeVisiteur.php');
+
 switch ($action) {
+	case "selectionnerMois":
+		$lesMois = [];
+		$tabVisiteurs = $pdo->getLesVisiteurs();
+		$idVisiteurChoisi = "";
+		if(isset($_POST['idVisiteurChoisi'])){
+			$idVisiteurChoisi = $_POST['idVisiteurChoisi'];
+			$lesMois = $pdo->getLesMoisCloture($idVisiteurChoisi);
+			
+		}
+		// Afin de sélectionner par défaut le dernier mois dans la zone de liste
+		// on demande toutes les clés, et on prend la première,
+		// les mois étant triés décroissants
+		$lesCles = array_keys( $lesMois );
+		$moisASelectionner = "";
+		//$idVisiteur = $_REQUEST['lstVisiteur'];
+		include("vues/v_listeVisiteur.php");
+		break;
+	
 	case "voirEtatFrais":
-		$idVisiteur = $_POST['lstVisiteur'];
-		$_SESSION['idVisiteur'] = $idVisiteur;
-		$leMois = $_POST['LstMois'];
-		$_SESSION['leMois'] = $leMois;
+		$leMois = $_REQUEST['lstMois'];
+		$idVisiteur = $_REQUEST['lstVisiteur'];
+		$idVisiteurChoisi = $idVisiteur;
+		$lesMois=$pdo->getLesMoisCloture($idVisiteur);//rajouté
+		$moisASelectionner = $leMois;//rajouté
+		
+		$tabVisiteurs = $pdo->getLesVisiteurs();//rajouté
+		include("vues/v_listeVisiteur.php");//rajouté
+		
+		//$idVisiteur = $_GET['lstVisiteur'];
+		//if (isset($_POST['lstVisiteur']))
+		//{
+			//echo "pas vide";
+		//}
+		//else {
+			//echo "vide";
+		//}
+		//$idVisiteur = $_POST['lstVisiteur'];
+		//$idVisiteur = $_SESSION['lstVisiteur'];
+		//$_SESSION['lstVisiteur'] = $idVisiteur;
+		//$_SESSION['idVisiteur'] = $idVisiteur;
+		//$leMois = $_REQUEST['lstMois'];
+		//$leMois = $_GET['lstMois'];
+		//$_SESSION['lstMois'] = $leMois;
+		//$_SESSION['leMois'] = $leMois;
+		//$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
+		//$moisASelectionner = $leMois;
+		
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
 		$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
-		$numAnnee = substr($leMois, 0, 4);
-		$numMois = substr($leMois, 4, 2);
+		$numAnnee = substr($leMois, 0,4);
+		$numMois = substr($leMois, 4,2);
 		$libEtat = $lesInfosFicheFrais['libEtat'];
 		$montantValide = $lesInfosFicheFrais['montantValide'];
 		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
@@ -21,22 +73,27 @@ switch ($action) {
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "";
 		$button = "<td class='qteForfait'><input type='submit' value='Modifier'></td>";
-		$report = "<td><input type='submit' name='btnReportRefus' value='Reporter'><br/>";
-		$refuser = "<input type='submit' name='btnReportRefus' value='Refuser'></td>";
+		$report = "<td><input type='submit' name='btnReportRefus' value='Reporter'></td>";
+		$refuser = "<td><input type='reset' name='btnReportRefus' value='Refuser'></td>";
 		$valider = 1;
 		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
-			include("vues/v_etatFrais.php");
+			include("vues/v_etatFraisComptable.php");
+			
 		}
 		break;
+		
 	case "validFrais":
+		//$validfrais = $_POST['bntValidFrais'];
 		$idVisiteur = $_SESSION['idVisiteur'];
-		$lesFrais = $_REQUEST['lesFrais'];
 		$leMois = $_SESSION['leMois'];
+		$lesFrais = $pdo->getLesFraisForfait($idVisiteur, $leMois); //rajouté
+		//$lesFrais = $_REQUEST['lesFrais'];
 		$pdo->majFraisForfait($idVisiteur, $leMois, $lesFrais);
 		include("vues/v_affichModif.php");
 		break;
+		
 	case "reportRefus":
 		$reportRefus = $_POST['btnReportRefus'];
 		$id = $_POST['id'];
@@ -53,6 +110,7 @@ switch ($action) {
 			}
 		}
 		break;
+		
 	case "validFiche":
 		$idVisiteur = $_SESSION['idVisiteur'];
 		$mois = $_SESSION['leMois'];

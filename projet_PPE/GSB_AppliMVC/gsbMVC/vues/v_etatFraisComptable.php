@@ -1,9 +1,10 @@
-﻿
 <h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : 
     </h3>
     <div class="encadre">
+    <form action="index.php?uc=validationFicheFrais&action=validFrais" method="post">
     <p>
-        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br> Montant validé : <?php echo $montantValide?>
+        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br> 
+        Montant validé : <?php echo $montantValide?>
               
                      
     </p>
@@ -31,9 +32,11 @@
           }
 		?>
 		</tr>
+		
     </table>
   	<table class="listeLegere">
-  	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
+  	   <caption>Descriptif des éléments hors forfait : 
+  	   <?php echo $nbJustificatifs ?> justificatifs reçus
        </caption>
              <tr>
                 <th class="date">Date</th>
@@ -56,19 +59,14 @@
           }
 		?>
     </table>
+    <div class="piedForm">
+      <p>
+        <input type='submit' value='Modifier' />
+        <input type='submit' name='btnReportRefus' value='Reporter'>
+        <input type='reset' name='btnReportRefus' value='Refuser'>
+        <input type='submit' name='btsValidFrais'  value='Valider'>
+      </p> 
+</div>
   </div>
   </div>
  
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -28,7 +28,7 @@
 				<?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?>
 			</li>
       		<li class="smenu">
-				<a href="index.php?uc=validationFicheFrais&action=selectionnerVisiteur" title="Valider fiche de frais">Validation fiche de frais</a>
+				<a href="index.php?uc=validationFicheFrais&action=selectionnerMois" title="Valider fiche de frais">Validation fiche de frais</a>
        		</li>
         	<li class="smenu">
             	<a href="index.php?uc=suiviPaiement&action=selectionnerFrais" title="Suivie fiche de frais">Suivie fiche de frais</a>
