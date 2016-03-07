@@ -1,4 +1,7 @@
-﻿<div id="contenu">
+﻿
+
+
+<div id="contenu">
       <h2>Identification utilisateur</h2>
 
 
@@ -13,6 +16,17 @@
 				<label for="mdp">Mot de passe*</label>
 			  <input id="mdp"  type="password"  name="mdp" size="30" maxlength="45">
       </p>
+      <?php 
+      if(isset($_POST['submit'])) {
+      	$texte = trim($_POST['mdp']);
+      	$texte1 = md5('$mdp');
+      	if($mdp){
+      		echo "mdp crypté";
+      	}else echo "error";
+      }
+      ?>
+      
+      <p>
          <input type="submit" value="Valider" name="valider">
          <input type="reset" value="Annuler" name="annuler"> 
       </p>

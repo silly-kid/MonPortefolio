@@ -224,5 +224,14 @@ function getSixDernierMois() {
 	return $taleaubMois;
 }
 
+function crypterMdp($mdp) {
+
+	$key = 'f134247';
+
+	$encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDEAL_256, md5($key), $mdp, MCRYPT_MODE_CBC, md5(md5 ($key))));
+
+	//pour récupéré le mdp
+	$encrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJMDAEL_256, md5($key), base64_decode($encrypted), MCRYPT_MODE_CBC, md5(md5($key))), '\0');
+}
 
 ?>
