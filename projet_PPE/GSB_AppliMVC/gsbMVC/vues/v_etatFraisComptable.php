@@ -35,13 +35,13 @@
 		 <?php
           }
 		?>
-		<td><?php echo $button ?></td>
+		<a href="index.php?uc=validationFicheFrai&action=validFrais"><td><?php echo $button ?> </td></a>
 		</tr>
 		
     </table>
   	<table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait : 
-  	   <?php echo $nbJustificatifs ?> justificatifs reçus
+  	   <?php echo $nbJustificatifs ?> nombre de justificatifs reçus
   	  
        </caption>
              <tr>
@@ -69,8 +69,8 @@
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
                  
-                <td><?php echo $report ?></td>
-                <td><?php echo $refuser ?></td>
+                <a href="index.php?uc=validationFicheFrai&action=reportRefus"><td><?php echo $report ?></td></a>
+                <a href="index.php?uc=validationFicheFrai&action=reportRefus"><td><?php echo $refuser ?></td></a>
              </tr>
         <?php 
           }
@@ -78,7 +78,7 @@
     </table>
     <div class="piedForm">
       <p>
-        <input type='submit' name='btsValidFrais'  value='Valider'>
+        <input href="index.php?uc=validationFicheFrai&action=validFiche" type='submit' name='btsValidFrais'  value='Valider'>
       </p> 
 </div>
   </div>
