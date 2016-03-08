@@ -35,7 +35,7 @@
 		 <?php
           }
 		?>
-		<a href="index.php?uc=validationFicheFrai&action=validFrais"><td><?php echo $button ?> </td></a>
+		<a href="index.php?uc=validationFicheFrais&action=validFrais"><td><?php echo $button ?> </td></a>
 		</tr>
 		
     </table>
@@ -69,8 +69,8 @@
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
                  
-                <a href="index.php?uc=validationFicheFrai&action=reportRefus"><td><?php echo $report ?></td></a>
-                <a href="index.php?uc=validationFicheFrai&action=reportRefus"><td><?php echo $refuser ?></td></a>
+                <a href="index.php?uc=validationFicheFrais&action=reportRefus"><td><?php echo $report ?></td></a>
+                <a href="index.php?uc=validationFicheFrais&action=reportRefus"><td><?php echo $refuser ?></td></a>
              </tr>
         <?php 
           }
@@ -78,7 +78,7 @@
     </table>
     <div class="piedForm">
       <p>
-        <input href="index.php?uc=validationFicheFrai&action=validFiche" type='submit' name='btsValidFrais'  value='Valider'>
+        <input href="index.php?uc=validationFicheFrais&action=validFiche" type='submit' name='btsValidFrais'  value='Valider'>
       </p> 
 </div>
   </div>
