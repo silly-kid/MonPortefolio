@@ -72,9 +72,11 @@ switch ($action) {
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "";
-		$button = "<td class='qteForfait'><input type='submit' value='Modifier'></td>";
-		$report = "<td><input type='submit' name='btnReportRefus' value='Reporter'></td>";
-		$refuser = "<td><input type='reset' name='btnReportRefus' value='Refuser'></td>";
+		$button = "<td class='qteForfait'><input type='button' value='Modifier'></td>";
+		//$report = "<td><input type='button' name='btnReportRefus' value='Reporter'></td>";
+		$report = "<input type='button' name='btnReportRefus' value='Reporter'>";
+		$refuser = "<input type='button' name='btnReportRefus' value='Refuser'>";
+		//$refuser = "<td><input type='button' name='btnReportRefus' value='Refuser'></td>";
 		$valider = 1;
 		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");

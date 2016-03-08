@@ -15,7 +15,7 @@
          foreach ( $lesFraisForfait as $unFraisForfait ) 
 		 {
 			$libelle = $unFraisForfait['libelle'];
-			$button = "<td class='qteForfait'><input type='submit' value='Modifier'></td>";
+			$button = "<td class='qteForfait'><input type='button' value='Modifier'></td>";
 		?>	
 			<th> <?php echo $libelle?></th>
 			
@@ -57,8 +57,8 @@
 			$libelle = $unFraisHorsForfait['libelle'];
 			$montant = $unFraisHorsForfait['montant'];
 			
-			$report = "<td><input type='submit' name='btnReportRefus' value='Reporter'></td>";
-			$refuser = "<td><input type='reset' name='btnReportRefus' value='Refuser'></td>";
+			$report = "<td><input type='button' name='btnReportRefus' value='Reporter'></td>";
+			$refuser = "<td><input type='button' name='btnReportRefus' value='Refuser'></td>";
 			
 			
 			
@@ -69,8 +69,8 @@
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
                  
-                <a href="index.php?uc=validationFicheFrais&action=reportRefus"><td><?php echo $report ?></td></a>
-                <a href="index.php?uc=validationFicheFrais&action=reportRefus"><td><?php echo $refuser ?></td></a>
+                <td><a href="index.php?uc=validationFicheFrais&action=reportRefus"><?php echo $report ?></a></td>
+                <td><a href="index.php?uc=validationFicheFrais&action=reportRefus"><?php echo $refuser ?></a></td>
              </tr>
         <?php 
           }
