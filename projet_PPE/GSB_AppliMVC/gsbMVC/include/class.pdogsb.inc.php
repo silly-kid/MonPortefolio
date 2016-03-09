@@ -145,9 +145,9 @@ class PdoGsb{
 		$lesCles = array_keys($lesFrais);
 		foreach($lesCles as $unIdFrais){
 			$qte = $lesFrais[$unIdFrais];
-			$req = "update lignefraisforfait set lignefraisforfait.quantite = ['$qte']
-			where lignefraisforfait.idvisiteur = '$idVisiteur' and lignefraisforfait.mois = '$mois'
-			and lignefraisforfait.idfraisforfait = '$unIdFrais'";
+			$req = "update lignefraisforfait set lignefraisforfait.quantite = . ['$qte'] .
+			where lignefraisforfait.idvisiteur =  .$idVisiteur. and lignefraisforfait.mois = .'$mois'.
+			and lignefraisforfait.idfraisforfait = .'$unIdFrais'.";
 			PdoGsb::$monPdo->exec($req);
 		}
 		

@@ -4,15 +4,12 @@ $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
 
 echo $action;
-$tabVisiteurs = $pdo->getLesVisiteurs();
 
+$tabVisiteurs = $pdo->getLesVisiteurs();
 //$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
 //$lesCles = array_keys( $lesMois );
 //$moisASelectionner = $lesCles[0];
-
-
 //include ('vues/v_listeVisiteur.php');
-
 switch ($action) {
 	case "selectionnerMois":
 		$lesMois = [];
@@ -87,19 +84,17 @@ switch ($action) {
 		break;
 		
 	case "validFrais":
-		//$validfrais = $_POST['bntValidFrais'];
 		$idVisiteur = $_SESSION['idVisiteur'];
 		$leMois = $_SESSION['leMois'];
 		$lesFrais = $pdo->getLesFraisForfait($idVisiteur, $leMois); //rajouté
-		//$lesFrais = $_REQUEST['lesFrais'];
 		$pdo->majFraisForfait($idVisiteur, $leMois, $lesFrais);
 		include("vues/v_affichModif.php");
 		break;
 		
 	case "reportRefus":
-		$reportRefus = $_POST['btnReportRefus'];
-		$id = $_POST['id'];
-		$libelle = $_POST['libelle'];
+		$reportRefus = $_REQUEST['btnReportRefus'];
+		$id = $_REQUEST['id'];
+		$libelle = $_REQUEST['libelle'];
 		$leMois = $_SESSION['leMois'];
 		$idVisiteur = $_SESSION['idVisiteur'];
 		if($reportRefus == 'Refuser' && !preg_match("/REFUSE :/", $libelle)){
@@ -109,6 +104,7 @@ switch ($action) {
 			if($reportRefus == 'Reporter'){
 				$pdo->reportFraisHorsForfait($id, $leMois, $idVisiteur);
 				include('vues/v_update.php');
+				
 			}
 		}
 		break;
