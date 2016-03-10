@@ -31,7 +31,8 @@
 		  {
 				$quantite = $unFraisForfait['quantite'];
 		?>
-                <td class="qteForfait"><?php echo $quantite?> </td>
+                <td class="qteForfait"><input value="<?php echo $quantite?>"> </td>
+                
 		 <?php
           }
 		?>

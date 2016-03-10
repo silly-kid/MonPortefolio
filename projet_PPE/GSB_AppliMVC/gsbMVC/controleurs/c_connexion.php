@@ -40,7 +40,7 @@ switch($action){
 		echo $login;
 		echo $mdp;
 		//fin
-		 */
+		*/ 
 		
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)) {
