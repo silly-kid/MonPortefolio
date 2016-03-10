@@ -426,6 +426,25 @@ class PdoGsb{
 		where fichefrais.idvisiteur ='$idVisiteur' and fichefrais.mois = '$mois'";
 		PdoGsb::$monPdo->exec($req);
 	}
+	
+/**
+ * Essaye de crypter mdp 
+ * 
+ */	
+	public function majCryptMdp($login, $mdp, $texte1) {
+			$req = "update visiteur set visiteur.mdp = '$texte1'
+			where visiteur.login = '$login'";
+			PdoGsb :: $monPdo -> exec ($req);
+			
+	}
+	
+	public function getInfosmdp($login) {
+		$req = "select mdp from visiteur where visiteur.login = '$login'";
+		PdoGsb :: $monPdo -> exec ($req);
+	}
+	
+	
+	
 /**
 * Retourne les montant de chaque frais forfait rangé dans l'ordre alphabétique dans un tableau
 *

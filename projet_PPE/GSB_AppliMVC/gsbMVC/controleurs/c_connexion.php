@@ -12,6 +12,36 @@ switch($action){
 		$login = $_REQUEST['login'];
 		$mdp = $_REQUEST['mdp'];
 		
+		//crypter mdp
+		/*
+		echo "Mot de passe avant : ";
+		echo $mdp;
+		$texte = trim($_POST['mdp']);
+		$texte1 = md5('$mdp');
+		$mdp = $texte1;
+		if($mdp){
+			echo "  le mdp a ete crypté  ";
+		}else echo "  error  ";
+			
+		echo "  texte1 : ";
+		echo $texte1;
+		
+		echo "  mdp cryptage : ";
+		echo $mdp;
+		
+		$pdo->majCryptMdp($login, $mdp, $texte1);
+		
+		
+		echo "  mdp changer dans bdd : ";
+		echo $mdp;
+		$mdp = $pdo->getInfosmdp($login);
+	
+		echo "  verif : ";
+		echo $login;
+		echo $mdp;
+		//fin
+		 */
+		
 		$visiteur = $pdo->getInfosVisiteur($login,$mdp);
 		if(!is_array( $visiteur)) {
 			ajouterErreur("Login ou mot de passe incorrect");

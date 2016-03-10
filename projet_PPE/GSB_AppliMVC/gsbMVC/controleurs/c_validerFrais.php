@@ -83,9 +83,12 @@ switch ($action) {
 		}
 		break;
 		
-	case "validFrais":
+	case "validFrais":		
 		$idVisiteur = $_SESSION['idVisiteur'];
-		$leMois = $_SESSION['leMois'];
+		$leMois = $_SESSION['leMois'];		
+		$tabVisiteurs = $pdo->getLesVisiteurs();//rajouté
+		include("vues/v_listeVisiteur.php");//rajouté
+		
 		$lesFrais = $pdo->getLesFraisForfait($idVisiteur, $leMois); //rajouté
 		$pdo->majFraisForfait($idVisiteur, $leMois, $lesFrais);
 		include("vues/v_affichModif.php");
@@ -117,7 +120,9 @@ switch ($action) {
 		$tabQuantites = $pdo->getLesQuantites($idVisiteur, $mois);
 		$montant = 0;
 		for($i=0; $i<4; $i++){
-			$montant += ($tabMontant[$i][0] * $tabQuantites[$i][0]);
+			$montant += ($tabMontant[$i][0] * $tabQuantites[$i][0]); 
+			break;/*rajouté*/
+			
 		}
 		$montantHorsForfait = $pdo->getMontantHorsForfait($idVisiteur, $mois);
 		$montant += $montantHorsForfait[0];
