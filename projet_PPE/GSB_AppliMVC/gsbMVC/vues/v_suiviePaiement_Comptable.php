@@ -2,12 +2,12 @@
     </h3>
     <div class="encadre">
     <p>
-        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br> Montant validé : <?php echo $montantValide?>
+        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br> Montant validÃ© : <?php echo $montantValide?>
               
                      
     </p>
   	<table class="listeLegere">
-  	   <caption>Eléments forfaitisés </caption>
+  	   <caption>ElÃ©ments forfaitisÃ©s </caption>
         <tr>
          <?php
          foreach ( $lesFraisForfait as $unFraisForfait ) 
@@ -32,11 +32,11 @@
 		</tr>
     </table>
   	<table class="listeLegere">
-  	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
+  	   <caption>Descriptif des Ã©lÃ©ments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reÃ§us -
        </caption>
              <tr>
                 <th class="date">Date</th>
-                <th class="libelle">Libellé</th>
+                <th class="libelle">LibellÃ©</th>
                 <th class='montant'>Montant</th>                
              </tr>
         <?php      
@@ -58,11 +58,13 @@
     <div class="piedForm">
       <p>
       
-      <?php $valider = "<input type='button' name='btnValidSuivie' value='Valider'>"; ?>
-      <td><a href="index.php?uc=validationFicheFrais&action=remboursement"><?php echo $valider ?></a></td>
+      <?php $rembourse = "<input type='button' name='btnValidSuivie' value='RembrousÃ©'>"; ?>
+      <a href="index.php?uc=validationFicheFrais&action=remboursement"><?php echo $rembourse ?></a><br>
+      <?php $paiement = "<input type='button' name='btnValidSuivie' value='Mise en paiement'>"; ?>
+      <a href="index.php?uc=validationFicheFrais&action=paiement"><?php echo $paiement ?></a>
       
       </p> 
 </div>
   </div>
-  </div>
+ </div>
  

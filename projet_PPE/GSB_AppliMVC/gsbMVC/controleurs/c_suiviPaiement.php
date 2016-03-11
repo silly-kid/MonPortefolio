@@ -24,14 +24,14 @@ switch ($action) {
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "readOnly='readOnly'";
-		$button = "";
-		$report = "";
-		$refuser = "";
-		$valider = 2;
+		//$button = "";
+		//$report = "";
+		//$refuser = "";
+		//$valider = 2;
 		if ((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
-			include("vues/v_etatFrais.php");
+			include("vues/v_suiviePaiement_Comptable.php");
 		}
 		break;
 		
@@ -40,6 +40,15 @@ switch ($action) {
 		$mois = $_SESSION['leMois'];
 		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'RB');
 		include("vues/v_rembourse.php");
+		break;
+		
+	case 'paiement' :
+		$idVisiteur = $_SESSION['idVisiteur'];
+		$mois = $_SESSION['leMois'];
+		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'VA');
+		include("vues/v_update.php");
+		break;
+		
 }
 include("vues/v_pied.php");
 ?>

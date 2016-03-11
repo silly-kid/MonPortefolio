@@ -3,13 +3,13 @@
     <div class="encadre">
     <form action="index.php?uc=validationFicheFrais&action=validFrais" method="post">
     <p>
-        Etat : <?php echo $libEtat?> depuis le <?php echo $dateModif?> <br> 
-        Montant validé : <?php echo $montantValide?>
+        <strong><u>Etat :<a style= "color: red"><?php echo $libEtat?></a> depuis le <?php echo $dateModif?> <br> 
+        Montant validé :<a style= "color: red"> <?php echo $montantValide?></a></u></strong>
               
                      
     </p>
   	<table class="listeLegere">
-  	   <caption>Eléments forfaitisés </caption>
+  	   <caption><u>Eléments forfaitisés </u></caption>
         <tr>
          <?php
          foreach ( $lesFraisForfait as $unFraisForfait ) 
@@ -41,7 +41,7 @@
 		
     </table>
   	<table class="listeLegere">
-  	   <caption>Descriptif des éléments hors forfait :</caption>
+  	   <caption><u>Descriptif des éléments hors forfait :</u></caption>
   	   <caption> 
   	   nombre de justificatifs reçus :<?php echo $nbJustificatifs ?> 
   	  </caption>
