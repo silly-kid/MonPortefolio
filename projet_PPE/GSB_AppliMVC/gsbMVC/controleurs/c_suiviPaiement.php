@@ -3,7 +3,6 @@ include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
 echo $action;
 $lesFichesFrais = $pdo->getFichesFraisValidees();
-//echo $lesFichesFrais;
 include("vues/v_lstFicheFrais.php");
 
 switch ($action) {
@@ -11,8 +10,10 @@ switch ($action) {
 		$idEtMois = explode("/", $_POST['lstFicheFrais']);
 		$idVisiteur = $idEtMois[0];
 		$_SESSION['idVisiteur'] = $idVisiteur;
+		echo "voir fiche :" . $idVisiteur;
 		$leMois = $idEtMois[1];
 		$_SESSION['leMois'] = $leMois;
+		echo "voir fiche : " . $leMois;
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
 		$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
@@ -24,10 +25,6 @@ switch ($action) {
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "readOnly='readOnly'";
-		//$button = "";
-		//$report = "";
-		//$refuser = "";
-		//$valider = 2;
 		if ((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
@@ -46,7 +43,7 @@ switch ($action) {
 		$idVisiteur = $_SESSION['idVisiteur'];
 		$mois = $_SESSION['leMois'];
 		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'VA');
-		include("vues/v_update.php");
+		include("vues/v_valide.php");
 		break;
 		
 }

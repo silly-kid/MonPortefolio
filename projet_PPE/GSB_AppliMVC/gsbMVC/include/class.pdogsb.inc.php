@@ -141,6 +141,31 @@ class PdoGsb{
  * @param $lesFrais tableau associatif de clé idFrais et de valeur la quantité pour ce frais
  * @return un tableau associatif 
 */
+	public function majFraisForfaittest($idVisiteur, $mois, $lesFrais){
+		$lesCles = array_keys($lesFrais);
+		foreach($lesCles as $unIdFrais){
+			$qte = $lesFrais[$unIdFrais];
+			//print_r ($qte);
+			//print $qte ['quantite'];
+			$req = "update lignefraisforfait set lignefraisforfait.quantite = " .$qte['quantite']. "
+			where lignefraisforfait.idvisiteur =  .$idVisiteur. and lignefraisforfait.mois = .$mois.
+			and lignefraisforfait.idfraisforfait = ".$unIdFrais." ";
+			//echo $req;
+			PdoGsb::$monPdo->exec($req);
+		}
+		
+	}
+	
+	/**
+	 * Met à jour la table ligneFraisForfait
+	
+	 * Met à jour la table ligneFraisForfait pour un visiteur et
+	 * un mois donné en enregistrant les nouveaux montants
+	* @param $idVisiteur
+	* @param $mois sous la forme aaaamm
+	* @param $lesFrais tableau associatif de clé idFrais et de valeur la quantité pour ce frais
+	* @return un tableau associatif
+	*/
 	public function majFraisForfait($idVisiteur, $mois, $lesFrais){
 		$lesCles = array_keys($lesFrais);
 		foreach($lesCles as $unIdFrais){
@@ -150,7 +175,7 @@ class PdoGsb{
 			and lignefraisforfait.idfraisforfait = .'$unIdFrais'.";
 			PdoGsb::$monPdo->exec($req);
 		}
-		
+	
 	}
 	
 /**

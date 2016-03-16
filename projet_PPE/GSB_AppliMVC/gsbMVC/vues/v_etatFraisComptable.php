@@ -1,13 +1,10 @@
-<h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : 
-    </h3>
+<h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : </h3>
     <div class="encadre">
     <form action="index.php?uc=validationFicheFrais&action=validFrais" method="post">
     <p>
-        <strong><u>Etat :<a style= "color: red"><?php echo $libEtat?></a> depuis le <?php echo $dateModif?> <br> 
-        Montant validé :<a style= "color: red"> <?php echo $montantValide?></a></u></strong>
-              
-                     
-    </p>
+        Etat : <?php echo $libEtat ?> depuis le <?php echo $dateModif ?> <br> Montant validé : <?php echo $montantValide ?>
+   </p>
+   
   	<table class="listeLegere">
   	   <caption><u>Eléments forfaitisés </u></caption>
         <tr>
@@ -26,9 +23,11 @@
 		</tr>
 		
         <tr>
+        <form action="index.php?uc=validerFicheFrais&action=ModifFiche" method="post">
         <?php
           foreach (  $lesFraisForfait as $unFraisForfait  ) 
 		  {
+		  		$idFrais = $unFraisForfait['idfrais'];
 				$quantite = $unFraisForfait['quantite'];
 		?>
                 <td class="qteForfait"><input value="<?php echo $quantite?>"> </td>
@@ -36,10 +35,21 @@
 		 <?php
           }
 		?>
-		<td><a href="index.php?uc=validationFicheFrais&action=validFrais"><?php echo $modifier ?></a></td>
+		<td class="qteForfait"><input type="text"  name="lesFrais[<?php echo $idFrais?>]" value="<?php echo $quantite ?>" size="10" /></td>
 		</tr>
 		
     </table>
+     <p>
+    <div class="piedForm">
+        <input id="ok" type="submit" value="Valider" size="20" />
+        <input id="annuler" type="reset" value="Effacer" size="20" /> 
+   
+    </div>
+	</p>
+</br>
+ 	</form> 
+    
+    
   	<table class="listeLegere">
   	   <caption><u>Descriptif des éléments hors forfait :</u></caption>
   	   <caption> 
@@ -91,4 +101,3 @@
 </form>
   </div>
   </div>
- 

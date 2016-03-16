@@ -3,8 +3,6 @@ include('vues/v_sommaire.php');
 $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
 
-echo $action;
-
 $tabVisiteurs = $pdo->getLesVisiteurs();
 
 switch ($action) {
@@ -28,21 +26,15 @@ switch ($action) {
 	
 	case "voirEtatFrais":
 		$leMois = $_REQUEST['lstMois'];
+		$_SESSION['leMois']=$leMois;
 		$idVisiteur = $_REQUEST['lstVisiteur'];
+		$_SESSION['idVisiteur'] = $idVisiteur;
 		$idVisiteurChoisi = $idVisiteur;
-		$lesMois=$pdo->getLesMoisCloture($idVisiteur);//rajouté
-		$moisASelectionner = $leMois;//rajouté
-		
-		$tabVisiteurs = $pdo->getLesVisiteurs();//rajouté
-		include("vues/v_listeVisiteur.php");//rajouté
-		
-		//if (isset($_POST['lstVisiteur']))
-		//{
-			//echo "pas vide";
-		//}
-		//else {
-			//echo "vide";
-		//}
+		echo "voit etatFrais : ".$idVisiteur;
+		$lesMois=$pdo->getLesMoisCloture($idVisiteur);
+		$moisASelectionner = $leMois;
+		$tabVisiteurs = $pdo->getLesVisiteurs();
+		include("vues/v_listeVisiteur.php");
 			
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
 		$lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
@@ -55,9 +47,6 @@ switch ($action) {
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "";
-		$button = "<td class='qteForfait'><input type='button' value='Modifier'></td>";
-		$report = "<input type='button' name='btnReportRefus' value='Reporter'>";
-		$refuser = "<input type='button' name='btnReportRefus' value='Refuser'>";
 		$valider = 1;
 		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
@@ -69,14 +58,37 @@ switch ($action) {
 		
 	case "validFrais":		
 		$idVisiteur = $_SESSION['idVisiteur'];
+		echo "bouton modifier".$idVisiteur;
 		$leMois = $_SESSION['leMois'];		
-		$tabVisiteurs = $pdo->getLesVisiteurs();//rajouté
-		include("vues/v_listeVisiteur.php");//rajouté
+		$tabVisiteurs = $pdo->getLesVisiteurs();
+		//include("vues/v_listeVisiteur.php");
 		
-		$lesFrais = $pdo->getLesFraisForfait($idVisiteur, $leMois); //rajout�
-		$pdo->majFraisForfait($idVisiteur, $leMois, $lesFrais);
-		include("vues/v_affichModif.php");
+		$leVisiteur = $idVisiteur;
+		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
+		$lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
+		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+		$numAnnee = substr($leMois, 0, 4);
+		$numMois = substr($leMois, 4, 2);
+		$libEtat = $lesInfosFicheFrais['libEtat'];
+		$montantValide = $lesInfosFicheFrais['montantValide'];
+		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+		$dateModif = $lesInfosFicheFrais['dateModif'];
+		$dateModif = dateAnglaisVersFrancais($dateModif);
+		include("vues/v_etatFraisComptable.php");
 		
+		
+		$lesFrais = $_REQUEST['lesFrais'];
+		if (lesQteFraisValides($lesFrais)) {
+			$pdo->majFraisForfait($leVisiteur, $leMois, $lesFrais);
+		
+			ajouterErreur("les éléments forfaitisés on été modifiée!");
+			$type = 1;
+			include("vues/v_erreurs.php");
+		} else {
+			ajouterErreur("Les valeurs des frais doivent être numériques");
+			include("vues/v_erreurs.php");
+		}
+		include ("vues/v_affichModif.php");
 		break;
 		
 	case "reportRefus":
@@ -85,6 +97,7 @@ switch ($action) {
 		$libelle = $_REQUEST['libelle'];
 		$leMois = $_SESSION['leMois'];
 		$idVisiteur = $_SESSION['idVisiteur'];
+		echo $idVisiteur;
 		if($reportRefus == 'Refuser' && !preg_match("/REFUSE :/", $libelle)){
 			$pdo->majFraisHorsForfait($libelle, $id);
 			include("vues/v_refus.php");
@@ -99,6 +112,7 @@ switch ($action) {
 		
 	case "validFiche":
 		$idVisiteur = $_SESSION['idVisiteur'];
+		echo $idVisiteur;
 		$mois = $_SESSION['leMois'];
 		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'VA');
 		$tabMontant = $pdo->getLesMontants();
