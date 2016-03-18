@@ -15,7 +15,7 @@
                         $prenom = $uneFicheFrais['prenom'];
                         $mois = $uneFicheFrais['mois'];
                         ?>
-                        <option value="<?php echo $id . "/" . $mois; ?>"><?php echo $prenom . " " . $nom . " " . $mois ?></option>
+                        <option value="<?php echo $id . "/" . $mois; ?>"><?php echo $prenom . " " . $nom . " " . $mois ?> </option>
                         <?php
                     }
                     ?>    

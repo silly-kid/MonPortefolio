@@ -2,7 +2,6 @@
 include('vues/v_sommaire.php');
 $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
-
 $tabVisiteurs = $pdo->getLesVisiteurs();
 
 switch ($action) {
@@ -59,7 +58,8 @@ switch ($action) {
 	case "validFrais":		
 		$idVisiteur = $_SESSION['idVisiteur'];
 		echo "bouton modifier".$idVisiteur;
-		$leMois = $_SESSION['leMois'];		
+		$leMois = $_SESSION['leMois'];	
+		$lesFrais = $_REQUEST['lesFrais'];
 		$tabVisiteurs = $pdo->getLesVisiteurs();
 		//include("vues/v_listeVisiteur.php");
 		
@@ -77,7 +77,7 @@ switch ($action) {
 		include("vues/v_etatFraisComptable.php");
 		
 		
-		$lesFrais = $_REQUEST['lesFrais'];
+		//$lesFrais = $_REQUEST['lesFrais'];
 		if (lesQteFraisValides($lesFrais)) {
 			$pdo->majFraisForfait($leVisiteur, $leMois, $lesFrais);
 		
@@ -88,6 +88,19 @@ switch ($action) {
 			ajouterErreur("Les valeurs des frais doivent être numériques");
 			include("vues/v_erreurs.php");
 		}
+		
+		$leVisiteur = $idVisiteur;
+		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
+		$lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
+		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
+		$numAnnee = substr($leMois, 0, 4);
+		$numMois = substr($leMois, 4, 2);
+		$libEtat = $lesInfosFicheFrais['libEtat'];
+		$montantValide = $lesInfosFicheFrais['montantValide'];
+		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+		$dateModif = $lesInfosFicheFrais['dateModif'];
+		$dateModif = dateAnglaisVersFrancais($dateModif);
+		include("vues/v_resultatModif.php");
 		include ("vues/v_affichModif.php");
 		break;
 		

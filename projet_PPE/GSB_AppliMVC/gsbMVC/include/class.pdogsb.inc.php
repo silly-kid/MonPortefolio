@@ -166,13 +166,14 @@ class PdoGsb{
 	* @param $lesFrais tableau associatif de clé idFrais et de valeur la quantité pour ce frais
 	* @return un tableau associatif
 	*/
+
 	public function majFraisForfait($idVisiteur, $mois, $lesFrais){
 		$lesCles = array_keys($lesFrais);
 		foreach($lesCles as $unIdFrais){
 			$qte = $lesFrais[$unIdFrais];
-			$req = "update lignefraisforfait set lignefraisforfait.quantite = . ['$qte'] .
-			where lignefraisforfait.idvisiteur =  .$idVisiteur. and lignefraisforfait.mois = .'$mois'.
-			and lignefraisforfait.idfraisforfait = .'$unIdFrais'.";
+			$req = "update lignefraisforfait set lignefraisforfait.quantite = $qte
+			where lignefraisforfait.idvisiteur = '$idVisiteur' and lignefraisforfait.mois = '$mois'
+			and lignefraisforfait.idfraisforfait = '$unIdFrais'";
 			PdoGsb::$monPdo->exec($req);
 		}
 	
@@ -527,7 +528,7 @@ class PdoGsb{
  * @return $ligneResultat sous forme de tableau associatif content l'id, le nom ainsi que le prénom du visiteur, et le mois concerné.
 */
 	public function getFichesFraisValidees(){
-		$req = "select id, nom, prenom, mois from fichefrais join visiteur on fichefrais.idvisiteur = visiteur.id and idetat = 'VA'";
+		$req = "select id, nom, prenom, mois from fichefrais join visiteur on fichefrais.idvisiteur = visiteur.id and idetat = 'VA' where statut = 'visiteur'";
 		$ligneResultat1 = PdoGsb::$monPdo->query($req);
 		$ligneResultat = $ligneResultat1->fetchall();
 		return $ligneResultat;

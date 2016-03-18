@@ -12,7 +12,6 @@
          foreach ( $lesFraisForfait as $unFraisForfait ) 
 		 {
 			$libelle = $unFraisForfait['libelle'];
-			$modifier = "<input type='button' name='btnModifier' value='Modifier'>";
 		?>	
 			<th> <?php echo $libelle?></th>
 			
@@ -23,19 +22,19 @@
 		</tr>
 		
         <tr>
-        <form action="index.php?uc=validerFicheFrais&action=ModifFiche" method="post">
+        <form action="index.php?uc=validationFicheFrais&action=validFrais" method="post">
         <?php
           foreach (  $lesFraisForfait as $unFraisForfait  ) 
 		  {
 		  		$idFrais = $unFraisForfait['idfrais'];
 				$quantite = $unFraisForfait['quantite'];
 		?>
-                <td class="qteForfait"><input value="<?php echo $quantite?>"> </td>
+                <td class="qteForfait"><input type="text"  name="lesFrais[<?php echo $idFrais?>]" value="<?php echo $quantite ?>" size="10" /></td>
                 
 		 <?php
           }
 		?>
-		<td class="qteForfait"><input type="text"  name="lesFrais[<?php echo $idFrais?>]" value="<?php echo $quantite ?>" size="10" /></td>
+		
 		</tr>
 		
     </table>

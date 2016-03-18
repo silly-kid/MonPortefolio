@@ -1,4 +1,4 @@
-<h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : 
+<h3>Fiche de frais du mois <?php echo $numMois."-".$numAnnee?> : pour <?php echo $idVisiteur; ?> 
     </h3>
     <div class="encadre">
     <p>
@@ -59,9 +59,9 @@
       <p>
       
       <?php $rembourse = "<input type='button' name='btnValidSuivie' value='Rembrousé'>"; ?>
-      <a href="index.php?uc=validationFicheFrais&action=remboursement"><?php echo $rembourse ?></a><br>
+      <a href="index.php?uc=suiviPaiement&action=remboursement"><?php echo $rembourse ?></a><br>
       <?php $paiement = "<input type='button' name='btnValidSuivie' value='Mise en paiement'>"; ?>
-      <a href="index.php?uc=validationFicheFrais&action=paiement"><?php echo $paiement ?></a>
+      <a href="index.php?uc=suiviPaiement&action=paiement"><?php echo $paiement ?></a>
       
       </p> 
 </div>
