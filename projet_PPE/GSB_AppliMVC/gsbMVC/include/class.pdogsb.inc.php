@@ -534,5 +534,25 @@ class PdoGsb{
 		return $ligneResultat;
 	}
 	
+/**
+ * Frais km en fonction type vehicule
+ *
+ * 
+*/
+	
+	public function getFraiskm($idVisiteur,$mois){
+		$req = "select quantite from  lignefraisforfait
+		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'KM'";
+		PdoGsb :: $monPdo -> exec ($req);
+	}
+	
+	public function getVehicule($idVisiteur,$mois){
+		$req = "select quantite from  lignefraisforfait
+		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'VEH'";
+		PdoGsb :: $monPdo -> exec ($req);
+	}
+	
+	
+	
 }
 ?>
