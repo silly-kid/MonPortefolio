@@ -50,6 +50,22 @@ switch ($action) {
 		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
+			$km = $pdo->getFraiskm($idVisiteur, $mois);
+			$vehicule = $pdo->getVehicule($idVisiteur, $mois);
+			$vehicule1 = 0;
+			if($vehicule[0] == 1){
+				$vehicule1 = 0.52;
+			}
+			elseif($vehicule[0] == 2){
+				$vehicule1 = 0.58;
+			}
+			elseif($vehicule[0] == 3){
+				$vehicule1 = 0.62;
+			}
+			elseif($vehicule[0] == 4){
+				$vehicule1 = 0.67;
+			}
+			$resultat = $km[0] * $vehicule1;
 			include("vues/v_etatFraisComptable.php");
 			
 		}
@@ -74,7 +90,7 @@ switch ($action) {
 		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
-		include("vues/v_etatFraisComptable.php");
+		//include("vues/v_etatFraisComptable.php");
 		
 		
 		//$lesFrais = $_REQUEST['lesFrais'];
@@ -93,15 +109,8 @@ switch ($action) {
 		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($leVisiteur, $leMois);
 		$lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
-		$numAnnee = substr($leMois, 0, 4);
-		$numMois = substr($leMois, 4, 2);
-		$libEtat = $lesInfosFicheFrais['libEtat'];
-		$montantValide = $lesInfosFicheFrais['montantValide'];
-		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
-		$dateModif = $lesInfosFicheFrais['dateModif'];
-		$dateModif = dateAnglaisVersFrancais($dateModif);
+		
 		include("vues/v_resultatModif.php");
-		include ("vues/v_affichModif.php");
 		break;
 		
 	case "reportRefus":
@@ -142,5 +151,6 @@ switch ($action) {
 		include("vues/v_valide.php");
 		break;
 }
+
 include("vues/v_pied.php");
 ?>

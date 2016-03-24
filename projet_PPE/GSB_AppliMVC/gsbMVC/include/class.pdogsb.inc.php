@@ -543,13 +543,19 @@ class PdoGsb{
 	public function getFraiskm($idVisiteur,$mois){
 		$req = "select quantite from  lignefraisforfait
 		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'KM'";
-		PdoGsb :: $monPdo -> exec ($req);
+		$ligneResultat = PdoGsb::$monPdo->query($req);
+		$fetch = $ligneResultat->fetch();
+		return $fetch;
+		
 	}
 	
 	public function getVehicule($idVisiteur,$mois){
 		$req = "select quantite from  lignefraisforfait
 		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'VEH'";
-		PdoGsb :: $monPdo -> exec ($req);
+		$ligneResultat = PdoGsb::$monPdo->query($req);
+		$fetch = $ligneResultat->fetch();
+		return $fetch;
+		
 	}
 	
 	

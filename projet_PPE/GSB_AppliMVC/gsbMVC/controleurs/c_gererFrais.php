@@ -16,13 +16,13 @@ switch($action){
 	}
 	case 'validerMajFraisForfait':{
 		$lesFrais = $_REQUEST['lesFrais'];
-		if(lesQteFraisValides($lesFrais)){
-	  	 	$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
-		}
-		else{
-			ajouterErreur("Les valeurs des frais doivent être numériques");
-			include("vues/v_erreurs.php");
-		}
+			if(lesQteFraisValides($lesFrais)){
+	  	 		$pdo->majFraisForfait($idVisiteur,$mois,$lesFrais);
+			}
+			else{
+				ajouterErreur("Les valeurs des frais doivent être numériques");
+				include("vues/v_erreurs.php");
+			}
 	  break;
 	}
 	case 'validerCreationFrais':{
@@ -45,40 +45,29 @@ switch($action){
 		break;
 	}
 }
+
 $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
 $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
-//mission 5 :
-echo "l'idVisiteur :";
-echo $idVisiteur;
-echo "  le mois : ";
-echo $mois;
 $km = $pdo->getFraiskm($idVisiteur, $mois);
 $vehicule = $pdo->getVehicule($idVisiteur, $mois);
-echo " km : ";
-echo $km;
-echo $vehicule;
-
 $vehicule1 = 0;
-if($vehicule){
-	if($vehicule == '1'){
-		$vehicule1 == 0.52;
+
+	if($vehicule[0] == 1){
+		$vehicule1 = 0.52;
 	}
-	elseif($vehicule == '2'){
-		$vehicule1 == 0.58;
+	elseif($vehicule[0] == 2){
+		$vehicule1 = 0.58;
 	}
-	elseif($vehicule == '3'){
-		$vehicule1 == 0.62;
+	elseif($vehicule[0] == 3){
+		$vehicule1 = 0.62;
 	}
-	elseif($vehicule == '4'){
-		$vehicule1 == 0.67;
+	elseif($vehicule[0] == 4){
+		$vehicule1 = 0.67;
 	}
-}
-else {
-	echo "erreur";
-}
-$resultat = $km * $vehicule1;
-echo $resultat;
-//fin misson 5 
+	else{
+		echo "aucun vehicule type de vehicule choisi";
+	}
+$resultat = $km[0] * $vehicule1; 
 
 include("vues/v_listeFraisForfait.php");
 include("vues/v_listeFraisHorsForfait.php");

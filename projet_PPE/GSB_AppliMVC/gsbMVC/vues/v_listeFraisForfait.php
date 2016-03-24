@@ -38,7 +38,7 @@
 				<li>(Véhicule 4CV Essence) 0.62 € / Km</li>
 				<li>(Véhicule 5/6CV Essence) 0.67 € / Km</li>
 			</ul>
-			<p>Total frais kilométrique : <?php echo "en construction" ?></p>
+			<p>Total frais kilométrique enfonction du vehicule : <?php if (isset ($resultat)){echo $km[0] . " x " . $vehicule1 . " = " .$resultat ;}else {echo "aucun type de vehicule choisi";}?></p>
 			
 			
 			

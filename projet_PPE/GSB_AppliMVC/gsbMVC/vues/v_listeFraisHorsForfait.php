@@ -50,6 +50,7 @@
             </p>
           </fieldset>
       </div>
+      <b><?php if($lesFraisHorsForfait == NULL){ echo "pas encore de fairs hors forfait pour ce mois";} ?></b>
       <div class="piedForm">
       <p>
         <input id="ajouter" type="submit" value="Ajouter" size="20" />

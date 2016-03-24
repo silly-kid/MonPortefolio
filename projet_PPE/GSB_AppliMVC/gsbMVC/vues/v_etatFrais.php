@@ -29,9 +29,29 @@
                 <td class="qteForfait"><?php echo $quantite?> </td>
 		 <?php
           }
-		?>
+		?> 
 		</tr>
+		
     </table>
+    
+    <p>Legend pour les types de vehicule :</p>
+			<ul>
+			<li> 1 = (Véhicule 4CV Diesel) </li>
+			<li> 2 = (Véhicule 5/6CV Diesel) </li>
+			<li> 3 = (Véhicule 4CV Essence) </li>
+			<li> 4 = (Véhicule 5/6CV Essence) </li>
+			</ul>
+			<p>
+			Prix au kilomètre selon la puissance du véhicule déclaré auprès des services comptables :
+			</p>
+			<ul>
+				<li>(Véhicule 4CV Diesel) 0.52 € / Km</li>
+				<li>(Véhicule 5/6CV Diesel) 0.58 € / Km</li>
+				<li>(Véhicule 4CV Essence) 0.62 € / Km</li>
+				<li>(Véhicule 5/6CV Essence) 0.67 € / Km</li>
+			</ul>
+	<p>Total frais kilométrique enfonction du vehicule : <?php if (isset ($resultat)){echo $km[0] . " x " . $vehicule1 . " = " .$resultat ;}else {echo "aucun type de vehicule choisi";}?></p>
+    
   	<table class="listeLegere">
   	   <caption>Descriptif des éléments hors forfait -<?php echo $nbJustificatifs ?> justificatifs reçus -
        </caption>
@@ -56,6 +76,7 @@
           }
 		?>
     </table>
+    <b><?php if($lesFraisHorsForfait == NULL){ echo "pas de fairs hors forfait pour ce mois";} ?></b>
   </div>
   </div>
  

@@ -28,6 +28,22 @@ switch ($action) {
 		if ((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
+			$km = $pdo->getFraiskm($idVisiteur, $mois);
+			$vehicule = $pdo->getVehicule($idVisiteur, $mois);
+			$vehicule1 = 0;
+			if($vehicule[0] == 1){
+				$vehicule1 = 0.52;
+			}
+			elseif($vehicule[0] == 2){
+				$vehicule1 = 0.58;
+			}
+			elseif($vehicule[0] == 3){
+				$vehicule1 = 0.62;
+			}
+			elseif($vehicule[0] == 4){
+				$vehicule1 = 0.67;
+			}
+			$resultat = $km[0] * $vehicule1;
 			include("vues/v_suiviePaiement_Comptable.php");
 		}
 		break;

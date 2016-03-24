@@ -38,7 +38,25 @@
 		</tr>
 		
     </table>
-     <p>
+    
+     <p>Legend pour les types de vehicule :</p>
+			<ul>
+			<li> 1 = (Véhicule 4CV Diesel) </li>
+			<li> 2 = (Véhicule 5/6CV Diesel) </li>
+			<li> 3 = (Véhicule 4CV Essence) </li>
+			<li> 4 = (Véhicule 5/6CV Essence) </li>
+			</ul>
+			<p>
+			Prix au kilomètre selon la puissance du véhicule déclaré auprès des services comptables :
+			</p>
+			<ul>
+				<li>(Véhicule 4CV Diesel) 0.52 € / Km</li>
+				<li>(Véhicule 5/6CV Diesel) 0.58 € / Km</li>
+				<li>(Véhicule 4CV Essence) 0.62 € / Km</li>
+				<li>(Véhicule 5/6CV Essence) 0.67 € / Km</li>
+			</ul>
+	<p>Total frais kilométrique enfonction du vehicule : <?php echo $km[0] . " x " . $vehicule1 . " = " .$resultat ?></p> 
+	
     <div class="piedForm">
         <input id="ok" type="submit" value="Valider" size="20" />
         <input id="annuler" type="reset" value="Effacer" size="20" /> 
@@ -60,16 +78,17 @@
                 <th class='montant'>Montant</th>
                                 
              </tr>
-        <?php      
-          foreach ( $lesFraisHorsForfait as $unFraisHorsForfait ) 
-		  {
-			$date = $unFraisHorsForfait['date'];
-			$libelle = $unFraisHorsForfait['libelle'];
-			$montant = $unFraisHorsForfait['montant'];
-			$id = $unFraisHorsForfait['id'];
+        <?php
+        
+          	foreach ( $lesFraisHorsForfait as $unFraisHorsForfait ) 
+		  	{
+				$date = $unFraisHorsForfait['date'];
+				$libelle = $unFraisHorsForfait['libelle'];
+				$montant = $unFraisHorsForfait['montant'];
+				$id = $unFraisHorsForfait['id'];
 			
-			$report =  "<input type='button' name='btnReportRefus' value='Reporter'>";
-			$refuser =  "<input type='button' name='btnReportRefus' value='Refuser'>";
+				$report =  "<input type='button' name='btnReportRefus' value='Reporter'>";
+				$refuser =  "<input type='button' name='btnReportRefus' value='Refuser'>";
 			
 			
 			
@@ -89,9 +108,9 @@
           }
 		?>
     </table>
+     <b><?php if($lesFraisHorsForfait == NULL){ echo "pas de fairs hors forfait pour ce mois";} ?></b>
     <div class="piedForm">
       <p>
-      
       <?php $valider = "<input type='button' name='btnValideFiche' value='Valider'>"; ?>
       <td><a href="index.php?uc=validationFicheFrais&action=validFiche"><?php echo $valider ?></a></td>
       
