@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hf.xml",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\layout\\activity_hf.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_km.xml",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\layout\\activity_km.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hf_recap.xml",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\layout\\activity_hf_recap.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_liste.xml",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\layout\\layout_liste.xml"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\transfert.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\transfert.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\suppr.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\suppr.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_repas.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_repas.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\logogsb.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\logogsb.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_etape.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_etape.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_hf_recap.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_hf_recap.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_nuitee.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_nuitee.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_km.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_km.png"
+    },
+    {
+        "merged": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\frais_hf.png",
+        "source": "C:\\Users\\Jean-Charles Rochet\\AndroidStudioProjects\\SuiviDeVosFrais\\app\\src\\main\\res\\drawable-hdpi\\frais_hf.png"
+    }
+]
