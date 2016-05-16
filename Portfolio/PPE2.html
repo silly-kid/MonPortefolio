@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head
+        content must come *after* these tags -->
+        <meta name="description" content="Portfolio de Flora Carrière - BTS SIO SLAM">
+        <meta name="author" content="Flora Carrière">
+        <link rel="icon" href="favicon.ico">
+        <title>Portfolio de Flora Carriere (BTS SIO 2016)</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap-3.3.5-dist/css/bootstrap.min.cs" rel="stylesheet" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="css/cv.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#navbar" aria-controls="navbar">
+                        <span class="sr-only">Navigation raccourcie</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="test.html">Mon portfolio</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"> <li class ="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span>Accueil</a>
+                        </li>
+                        <li><a href="cvtg.html"><span class="glyphicon glyphicon-object-align-top"></span>
+                                CV</a></li>
+                        <li class="dropdown">
+                            <a href="réalisationss.html"><span class="glyphicon glyphicon-object-align-top"></span><span class="glyphicon glyphicon-list-alt"></span>
+                                Réalisations</a>    
+                        </li>
+                        <li>
+                            <a href="Annexe.html">
+                               Annexes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="competences.html">
+                               Compétences
+                            </a>
+                        </li>
+                        <li>
+                            <a href="veilletechnologique.html">
+                               Veille technologique
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mecontacter.html">
+                                <span class="glyphicon glyphicon-envelope"></span> Me contacter
+                            </a>
+                        </li>
+                        
+                </div><!--/.nav-collapse -->
+            </div><!--/.navbar-collapse -->
+        </nav>
+        <!-- Bootstrap core JavaScript ============================================ -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+        </script>
+        <script src="css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="css/bootstrap-3.3.5-dist/js/ie10-viewport-bug-workaround.js">
+        </script>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        
+        <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>PPE 2 : Application Android </h1>
+                <p>Application d’enregistrement des frais engagés et de suivi des remboursements pour mobile</p>
+                
+                <a  href="#"><img class="center-block img-responsive img-circle1" src="images/original.jpg" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail"></a>
+                <hr>
+                <u>Présentation du contexte :</u>
+                <p>L'entreprise concernée
+                    Nom et origine du nom : GSB (Galaxy Swiss Bourdin) issu de la fusion entre Galaxy (géant américain) et Swiss Bourdin (européen).
+                    Année de fusion des laboratoires pour créer GSB : 2009
+                    Lieu du siège social : Philadelphie, Pennsylvanie (USA)
+                    Liste des services présents sur le site parisien : gestion des ressources humaines, comptabilité, direction, commercial, labo-recherche, juridique, communication.
+                    Liste des systèmes de protections, physiques et logiques, des données sensibles de l'entreprise : accès sécurisé à la salle serveur (accès par ascenseur avec clé sécurisée, par escalier avec lecteur de badge, sas d'entrée avec gardien), réplication des données aux USA par lien dédié, fonctions de redondances pour assurer une tolérance aux pannes maximale.
+                    Format des adresses électroniques : nomUtilisateuràswiss-galaxy.com
+                    Nom des bases de données achetées périodiquement : BDMED et BDPHARMA</p>
+                <hr> 
+                <u>Définition de l’objet</u></p>
+                    <p>L'application "Gestion des frais"
+                        Objectifs de cette application :</p>
+                    <ul>
+                        <li>Enregistrement des frais engagés par les visiteurs (déplacement, restauration, hébergement, événementiel, conférence...)</li>
+                        <li>Présentation d'un suivi daté des opérations menées par le service comptable (réception des pièces, validation de la demande de remboursement, mise en paiement, remboursement effectué)</li>
+                        <li>Acteurs concernés : visiteurs, délégués, responsables de secteur, service comptable</li>
+                    </ul>
+                    <p> Restriction des accès :</p>
+                    <ul>
+                        <li>Partie "saisie des comptes rendus" : accessible par la force de visite (visiteurs, délégués, responsables de secteur)</li>
+                        <li>Partie "gestion des remboursements" : accessible par le service comptable</li>
+                        <li>Partie de code fournie : La partie "saisie des comptes rendus"</li>
+                    </ul>
+                        <p>Organisation des remboursements :</p>
+                        <ul>
+                            <li> remboursement des péages : pas de remboursement car badge individuel</li>
+                            <li> remboursement des repas/nuitées/étapes : forfait (pas de justificatif)</li>
+                            <li> remboursement du trajet : en fonction du kilométrage</li>
+                            <li> remboursement des autres frais : réel sur justificatif</li>
+                            <li> durée de conservation des justificatifs : 3 ans</li>
+                            <li> qui s'occupe des éventuels contrôles : délégués régionaux</li>
+                            <li> fréquence des remboursements : mensuel</li>
+                            <li> période de saisie des frais : tout le mois pour les frais du mois en cours et éventuellement ceux de l'année écolée</li>
+                            <li> période de saisie des frais : tout le mois pour les frais du mois en cours et éventuellement ceux de l'année écoulée</li>
+                            <li> période de saisie des frais : tout le mois pour les frais du mois en cours et éventuellement ceux de l'année écoulée</li>
+
+                            <li> date de clôture de la saisie (soyez précis) : dernier jour du mois (plus précisément, dès la première saisie du mois suivant, ou dès le début de campagne de validation des fiches par le service comptable donc entre le 10 et le 20 du mois suivant)</li>
+                            <li> procédure en cas d'incohérence de saisie constatée par le service comptable : contact téléphonique avec le visiteur et modification faite directement</li>
+                            <li> date limite pour adresser les factures : le 10 du mois suivant la saisie</li>
+                            <li> en cas d'envoi hors délai des factures : le frais concerné est basculé automatiquement sur le mois suivant</li>
+                            <li> opérations possibles par le service comptable au sujet des frais hors forfaits : validation ou non (si non validation, la demande pour ce frais est supprimée et le visiteur est informé)</li>
+                            <li> date de mise en paiement : le 20 du mois suivant la saisie</li>
+                            <li> période de consultation, pour un visiteur, des montants remboursés : un an</li></p>
+                        </ul>
+                    <p>
+                    <hr>
+                    <p>Suite aux demandes des visiteurs, une application Android est en cours de développement.
+                Elle doit permettre aux visiteurs de saisir en direct leurs frais (forfaitisés ou hors
+            forfaits). L'application est une sorte de mémo qui permet d'enregistrer l'information à
+            tout moment. Les visiteurs peuvent ensuite consulter leur mobile pour voir ce qu'ils ont
+            enregistré et ainsi remplir le formulaire sur le site officiel.
+            Il est prévu que l'application permette l'envoi direct des informations saisies sur le serveur
+            web qui mettra alors à jour directement la base de données, sans que le visiteur
+            n'ait à ressaisir les données dans l'application web. Cette fonctionnalité ne vous est pas
+            confiée.
+            Actuellement, l'application comporte un menu principal permettant d'accéder à la saisie
+            des différentes catégories de frais ainsi que l'activité portant sur la saisie des km et
+            des frais hors forfait. Une sérialisation permet de mémoriser les informations.
+            Voici les interfaces correspondantes.</p>
+                                     
+                    <hr>    
+                    <p><u>Forme de l’objet</u></p>
+                    <p>
+                    En consctruction
+                    </p>
+                <hr> 
+                <a  href="#"><img class="center-block img-responsive img-circle1" src="images/6028-noir-zoom (4242).jpg" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail"></a>
+                <hr>
+                    <p><u> Les Missions :</u></p>
+                    <p><u>Mission 1 :</u></p> 
+                    <p>Tâche 1 :  Configuration
+                    L'application existante a été faite avec l'IDE Eclipse et le SDK de l'API 14 (avec un AVD
+                    type Nexus S 4,0', 480x800 hdpi).
+                    La première étape va consister à récupérer cette application pour l'adapter à l'IDE Android
+                    Studio.
+                    Pour cela, voici un petit mode opératoire :</p>
+                    <ul>
+                        <li>dans le sdk, ajoutez Android 4.0 (API 14)</li>
+                    <li> dans Android Studio choisir "import project"</li>
+                    <li>sélectionner le dossier contenant le projet Eclipse</li>
+                    <li>sélectionner le nouveau dossier de destination (il faut d'abord créer un dossier)</li>
+                    <li>créer un avd adapté (en utilisant les informations données plus haut)</li>
+                    <li>dans le dossier res/layout, essayer d'ouvrier un fichier xml pour voir si l'aperçu
+                    apparait (sinon utiliser les liens de réparation mis à disposition)</li>
+                    <li>tester l'application existante et contrôler si les fonctionnalités déjà codées fonctionnent
+                    (en particulier la sérialisation pour mémoriser les saisies d'une fois sur
+                    l'autre)</li></p>
+                    </ul> 
+                    <p>
+                     Tâche 2 : Enregistrement des autres catégories de frais forfaitisés
+                     Créer les autres activités pour la saisie des frais forfaitisés, sur le modèle de la saisie des
+                     frais km, en respectant la présentation des interfaces données ci-dessus. Il faudra aussi
+                     faire en sorte que les informations soient enregistrées (comme elles le sont déjà pour
+                     les km).
+                    </p>
+                <hr> 
+                <a  href="#"><img class="center-block img-responsive img-circle1" src="images/gt3.png" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail"></a>
+                <hr>
+                
+                <p><u>Mission 2 :</u>
+                <p>Tâche 3 :</p>
+                <p>Ecrie le code derrière le bouton de synchronisation du menu principal, 
+                    qui va permettre d'insérer dans la base distante tout ce qui a été enregistré en local.
+                    Cette tâche est nettement plus complexe et la plus importante.</p>
+                    
+                <hr>
+                
+                
+                     <p><u>Experience accomplis :</u></p>
+                     <p>En consctruction </p>               
+                <hr>
+                    
+                    <p><u>Technologie utilisée :</u></p>
+                    <p>Wamp serveur, Eclipse, eGit, github, Phpmyadmin, Xdebug.</p>
+                <hr>
+                    <p><u>Langage utilisé :</u></p>
+                    <p>HTML/CSS</p>
+                <hr>
+                <p class="titre"><a href="images/7864501-2939-2 .doc"> Fiche de situation</a></p>
+                <p class="titre"><a href="Annexe.html"> Annexes</a></p>
+            </div>
+        </div>
+    </div>
+        <hr>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <footer class="footer1">
+        <div class="container">
+            <center><p style="color: white;"id="copyright">&copy; Flora Carriere 2015</p></center>
+        </div>
+        </footer>
+</body>
+
+</html>
