@@ -1,9 +1,9 @@
 ﻿<?php
 /** 
  * Fonctions pour l'application GSB
- 
+ *
  * @package default
- * @author Cheri Bibi
+ * @author Flora Carriere
  * @version    1.0
  */
  /**

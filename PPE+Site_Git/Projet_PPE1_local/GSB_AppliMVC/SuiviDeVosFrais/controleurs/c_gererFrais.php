@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Contrôleur Visiteur : pour validé, modifier, supprimer FF et FHF
+ * @author Flora Carriere
+ */
+
 include("vues/v_sommaire.php");
 $idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));

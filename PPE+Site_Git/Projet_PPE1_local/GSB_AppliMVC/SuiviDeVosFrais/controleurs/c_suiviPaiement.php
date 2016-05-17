@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Contrôleur Comptable : pour validé, modifier, refuser FF et FHF
+ * @author Flora Carriere
+ */
+
 include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
 echo $action;

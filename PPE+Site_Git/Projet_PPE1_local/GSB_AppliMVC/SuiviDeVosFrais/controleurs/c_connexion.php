@@ -1,4 +1,10 @@
 ﻿<?php
+
+/**
+ * Contrôleur de connexion
+ * @author Flora Carriere
+ */
+
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
 }

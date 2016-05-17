@@ -1,4 +1,10 @@
 ﻿<?php
+
+/**
+ * Contrôleur : Visiteur : voir état FF et FHF à une date : Fiche de Frais
+ * @author Flora Carriere
+ */
+
 include("vues/v_sommaire.php");
 $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];

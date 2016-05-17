@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Contrôleur Comptable : pour validéRemboursement, Mise en paiement, afficher FF et FHF : fiche de frais
+ * @author Flora Carriere
+ */
+
 include('vues/v_sommaire.php');
 $action = $_REQUEST['action'];
 $idVisiteur = $_SESSION['idVisiteur'];
