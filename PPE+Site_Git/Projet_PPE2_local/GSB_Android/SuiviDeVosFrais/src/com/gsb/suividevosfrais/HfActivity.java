@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 /**
- * Classe d'activité pour les frais hors forfait
- * @author Franck Noel
+ * Classe d'activitï¿½ pour les frais hors forfait
+ * @author Flora Carriere
  *
  */
 public class HfActivity extends Activity {
@@ -21,9 +21,9 @@ public class HfActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hf);
-		// mise à 0 du montant
+		// mise ï¿½ 0 du montant
 		((EditText)findViewById(R.id.txtHf)).setText("0") ;
-        // chargement des méthodes événementielles
+        // chargement des mÃ©thodes Ã©vÃ¨nementielles
 		imgReturn_clic() ;
 		cmdAjouter_clic() ;
 	}
@@ -47,7 +47,7 @@ public class HfActivity extends Activity {
     }
 
     /**
-     * Sur le clic du bouton ajouter : enregistrement dans la liste et sérialisation
+     * Sur le clic du bouton ajouter : enregistrement dans la liste et sï¿½rialisation
      */
     private void cmdAjouter_clic() {
     	((Button)findViewById(R.id.cmdHfAjouter)).setOnClickListener(new Button.OnClickListener() {
@@ -63,7 +63,7 @@ public class HfActivity extends Activity {
 	 * Enregistrement dans la liste du nouveau frais hors forfait
 	 */
 	private void enregListe() {
-		// récupération des informations saisies
+		// rÃ©cupÃ©ration des informations saisies
 		Integer annee = ((DatePicker)findViewById(R.id.datHf)).getYear() ;
 		Integer mois = ((DatePicker)findViewById(R.id.datHf)).getMonth() + 1 ;
 		Integer jour = ((DatePicker)findViewById(R.id.datHf)).getDayOfMonth() ;
@@ -72,14 +72,14 @@ public class HfActivity extends Activity {
 		// enregistrement dans la liste
 		Integer key = annee*100+mois ;
 		if (!Global.listFraisMois.containsKey(key)) {
-			// creation du mois et de l'annee s'ils n'existent pas déjà
+			// creation du mois et de l'annee s'ils n'existent pas dÃ©jÃ 
 			Global.listFraisMois.put(key, new FraisMois(annee, mois)) ;
 		}
 		Global.listFraisMois.get(key).addFraisHf(montant, motif, jour) ;		
 	}
 
 	/**
-	 * Retour à l'activité principale (le menu)
+	 * Retour Ã  l'activitÃ© principale (le menu)
 	 */
 	private void retourActivityPrincipale() {
 		Intent intent = new Intent(HfActivity.this, MainActivity.class) ;

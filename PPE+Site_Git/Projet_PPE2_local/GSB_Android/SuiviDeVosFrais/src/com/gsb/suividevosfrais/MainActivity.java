@@ -20,8 +20,8 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Classe d'activité principale de l'application
- * @author Franck Noel
+ * Classe d'activitÃ© principale de l'application
+ * @author Flora Carriere
  *
  */
 public class MainActivity extends Activity {
@@ -30,9 +30,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // récupération des informations sérialisées
+        // rÃ©cupÃ©ration des informations sÃ©rialisÃ©es
         recupSerialize() ;
-        // chargement des méthodes événementielles
+        // chargement des mÃ©thodes Ã©vÃ¨nementielles
         cmdMenu_clic(((Button)findViewById(R.id.cmdKm)), KmActivity.class) ;
         cmdMenu_clic(((Button)findViewById(R.id.cmdRepas)), RepActivity.class);
         cmdMenu_clic(((Button)findViewById(R.id.cmdNuitee)), NuiteeActivity.class);
@@ -50,23 +50,23 @@ public class MainActivity extends Activity {
     }
     
     /**
-     * Récupère la sérialisation si elle existe
+     * RÃ©cupÃ©re la sÃ©rialisation si elle existe
      */
     private void recupSerialize() {
     	Global.listFraisMois = (Hashtable<Integer, FraisMois>) Serializer.deSerialize(Global.filename, MainActivity.this) ;
-    	// si rien n'a été récupéré, il faut créer la liste
+    	// si rien n'a Ã©tÃ© rÃ©cupÃ©rÃ©, il faut crÃ©er la liste
     	if (Global.listFraisMois==null) {
     		Global.listFraisMois = new Hashtable<Integer, FraisMois>() ;
     	}
     }
 
     /**
-     * Sur la sélection d'un bouton dans l'activité principale ouverture de l'activité correspondante
+     * Sur la sÃ©lection d'un bouton dans l'activitÃ© principale ouverture de l'activitÃ© correspondante
      */
     private void cmdMenu_clic(Button button, final Class classe) {
     	button.setOnClickListener(new Button.OnClickListener() {
     		public void onClick(View v) {
-    			// ouvre l'activité 
+    			// ouvre l'activitÃ© 
     			Intent intent = new Intent(MainActivity.this, classe) ;
     			startActivity(intent) ;  			
     		}
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
     private void cmdTransfert_clic() {
     	((Button)findViewById(R.id.cmdTransfert)).setOnClickListener(new Button.OnClickListener() {
     		public void onClick(View v) {
-    			// envoi les informations sérialisées vers le serveur
+    			// envoi les informations sï¿½rialisï¿½es vers le serveur
     			// en construction
     		}
     	}) ;    	

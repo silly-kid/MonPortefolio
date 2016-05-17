@@ -12,13 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 /**
- * Classe d'activité pour les frais repas
- * @author Franck Noel
+ * Classe d'activitÃ© pour les frais repas
+ * @author Flora Carriere
  *
  */
 public class RepActivity extends Activity {
 
-	//informations affichées dans l'activité
+	//informations affichÃ©es dans l'activitÃ©
 	private Integer annee;
 	private Integer mois;
 	private Integer qte;
@@ -29,9 +29,9 @@ public class RepActivity extends Activity {
 		setContentView(R.layout.activity_rep);
 		//modification de l'affichage du DatePicker
 		Global.changeAfficheDate((DatePicker) findViewById(R.id.datRep));
-		//valorisation des propriétés
+		//valorisation des propriï¿½tï¿½s
 		valoriseProprietes();
-		//chargement des méthodes événementielles
+		//chargement des mÃ©thodes Ã©vÃ¨nementielles
 		imgReturn_clic();
 		cmdValider_clic();
 		cmdPlus_clic();
@@ -47,12 +47,12 @@ public class RepActivity extends Activity {
 	}
 	
 	/**
-	 * Valorisation des propriétés avec les informations affichées
+	 * Valorisation des propriÃ©tÃ©s avec les informations affichÃ©es
 	 */
 	private void valoriseProprietes(){
 		annee = ((DatePicker) findViewById(R.id.datRep)).getYear();
 		mois = ((DatePicker) findViewById(R.id.datRep)).getMonth() + 1;
-		//récupération de la qte correspondant au mois actuel
+		//rÃ©cupÃ©ration de la qte correspondant au mois actuel
 		qte = 0;
 		Integer key = annee*100+mois;
 		if(Global.listFraisMois.containsKey(key)){
@@ -73,7 +73,7 @@ public class RepActivity extends Activity {
 	}
 	
 	/**
-	 * Sur le clic du bouton valider : sérialisation
+	 * Sur le clic du bouton valider : sÃ©rialisation
 	 */
 	private void cmdValider_clic(){
 		((Button) findViewById(R.id.cmdRepValider)).setOnClickListener(new Button.OnClickListener(){
@@ -85,7 +85,7 @@ public class RepActivity extends Activity {
 	}
 	
 	/**
-	 * Sur le clic du bouton plus : ajout de 1 dans la quantité
+	 * Sur le clic du bouton plus : ajout de 1 dans la quantitï¿½
 	 */
 	private void cmdPlus_clic(){
 		((Button)findViewById(R.id.cmdRepPlus)).setOnClickListener(new Button.OnClickListener(){
@@ -96,7 +96,7 @@ public class RepActivity extends Activity {
 		});
 	}
 	/**
-	 * Sur le clic du bouton moins : enlève 1 dans la quantité si possible
+	 * Sur le clic du bouton moins : enlï¿½ve 1 dans la quantitÃ© si possible
 	 */
 	private void cmdMoins_clic(){
 		((Button)findViewById(R.id.cmdRepMoins)).setOnClickListener(new Button.OnClickListener(){
@@ -121,7 +121,7 @@ public class RepActivity extends Activity {
 	}
 	
 	/**
-	 * Enregistrement dans la zone de texte et dans la liste de la nouvelle qte, à la date choisie
+	 * Enregistrement dans la zone de texte et dans la liste de la nouvelle qte, Ã  la date choisie
 	 */
 	private void enregNewQte(){
 		//enregistrement dans la zone de texte
@@ -129,14 +129,14 @@ public class RepActivity extends Activity {
 		//enregistrement dans la liste
 		Integer key = annee*100+mois;
 		if(!Global.listFraisMois.containsKey(key)){
-			//création du mois et de l'année s'ils n'existent pas déja
+			//crï¿½ation du mois et de l'annï¿½e s'ils n'existent pas dï¿½ja
 			Global.listFraisMois.put(key, new FraisMois(annee,mois));
 		}
 		Global.listFraisMois.get(key).setRepas(qte);
 	}
 	
 	/**
-	 * Retour a l'activité principale (le menu)
+	 * Retour a l'activitÃ© principale (le menu)
 	 */
 	private void retourActivityPrincipale(){
 		Intent intent = new Intent(RepActivity.this,MainActivity.class);

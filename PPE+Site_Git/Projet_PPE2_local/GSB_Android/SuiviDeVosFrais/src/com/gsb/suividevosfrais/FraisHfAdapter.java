@@ -17,20 +17,20 @@ import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 /**
- * Classe d'affichage du tableau de récapitulatif
- * @author Franck Noel
+ * Classe d'affichage du tableau de rÃ©capitulatif
+ * @author Flora Carriere
  *
  */
 public class FraisHfAdapter extends BaseAdapter {
 
 	ArrayList<FraisHf> lesFrais ; // liste des frais du mois
 	LayoutInflater inflater ;
-	Integer key ;  // annee et mois (clé dans la liste)
-	Context context ; // contexte pour gérer la sérialisation
+	Integer key ;  // annee et mois (clï¿½ dans la liste)
+	Context context ; // contexte pour gï¿½rer la sï¿½rialisation
 	SupprClicListener supprlistener; //gestion des clics
 	
 	/**
-	 * Constructeur de l'adapter pour valoriser les propriétés
+	 * Constructeur de l'adapter pour valoriser les propriÃ©tÃ©s
 	 * @param context
 	 * @param lesFrais
 	 * @param key
@@ -45,7 +45,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * retourne le nombre d'éléments de la listview
+	 * retourne le nombre d'Ã©lÃ©ments de la listview
 	 */
 	@Override
 	public int getCount() {
@@ -53,7 +53,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * retourne l'item de la listview à un index précis
+	 * retourne l'item de la listview Ã  un index prÃ©cis
 	 */
 	@Override
 	public Object getItem(int index) {
@@ -61,7 +61,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * retourne l'index de l'élément actuel
+	 * retourne l'index de l'Ã©lÃ©ment actuel
 	 */
 	@Override
 	public long getItemId(int index) {
@@ -69,7 +69,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * structure contenant les éléments d'une ligne
+	 * structure contenant les Ã©lÃ©ments d'une ligne
 	 */
 	private class ViewHolder {
 		TextView txtListJour ;
@@ -110,7 +110,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	/**
 	 * 	  Interface de gestion des clics de suppression de ligne
 	 
-	 * @author Franck Noel
+	 * @author Flora Carriere
 	 * 
 	 *
 	 */

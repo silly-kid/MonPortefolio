@@ -18,8 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 /**
- * Classe Activité pour le récapitulatif des frais hors forfait
- * @author Franck Noel
+ * Classe ActivitÃ© pour le rÃ©capitulatif des frais hors forfait
+ * @author Flora Carriere
  *
  */
 public class HfRecapActivity extends Activity {
@@ -30,9 +30,9 @@ public class HfRecapActivity extends Activity {
 		setContentView(R.layout.activity_hf_recap);
 		// modification de l'affichage du DatePicker
 		Global.changeAfficheDate((DatePicker) findViewById(R.id.datHfRecap)) ;
-		// valorisation des propriétés
+		// valorisation des propriÃ©tÃ©s
 		afficheListe() ;
-        // chargement des méthodes événementielles
+        // chargement des mÃ©thodes Ã©vÃ¨nementielles
 		imgReturn_clic() ;
 		dat_clic() ;
 	}
@@ -45,12 +45,12 @@ public class HfRecapActivity extends Activity {
 	}
 
 	/**
-	 * Affiche la liste des frais hors forfaits de la date sélectionnée
+	 * Affiche la liste des frais hors forfaits de la date sÃ©lectionnÃ©e
 	 */
 	private void afficheListe() {
 		Integer annee = ((DatePicker)findViewById(R.id.datHfRecap)).getYear() ;
 		Integer mois = ((DatePicker)findViewById(R.id.datHfRecap)).getMonth() + 1 ;
-		// récupération des frais HF pour cette date
+		// rï¿½cupï¿½ration des frais HF pour cette date
 		Integer key = annee*100 + mois ;
 		ArrayList<FraisHf> liste = null ;
 		if (Global.listFraisMois.containsKey(key)) {
@@ -85,7 +85,7 @@ public class HfRecapActivity extends Activity {
     }
 
     /**
-     * Sur le changement de date : mise à jour de l'affichage de la qte
+     * Sur le changement de date : mise Ã  jour de l'affichage de la qte
      */
     private void dat_clic() {   	
     	final DatePicker uneDate = (DatePicker)findViewById(R.id.datHfRecap) ;
@@ -100,7 +100,7 @@ public class HfRecapActivity extends Activity {
     
 
 	/**
-	 * Retour à l'activité principale (le menu)
+	 * Retour Ã  l'activitÃ© principale (le menu)
 	 */
 	private void retourActivityPrincipale() {
 		Intent intent = new Intent(HfRecapActivity.this, MainActivity.class) ;

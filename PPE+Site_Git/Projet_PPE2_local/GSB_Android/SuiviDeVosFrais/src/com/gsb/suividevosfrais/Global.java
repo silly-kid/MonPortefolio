@@ -17,19 +17,19 @@ import android.widget.ImageView;
 
 /**
  * Classe globale a toute l'application
- * @author Franck Noel
+ * @author Flora Carriere
  *
  */
 public abstract class Global {
 
-	// tableau d'informations mémorisées
+	// tableau d'informations mÃ©morisÃ©es
 	public static Hashtable<Integer, FraisMois> listFraisMois = new Hashtable<Integer, FraisMois>() ;
 
-	// fichier contenant les informations sérialisées
+	// fichier contenant les informations sÃ©rialisÃ©es
 	public static final String filename = new String("save.fic") ;
 
 	/**
-	 * Modification de l'affichage de la date (juste le mois et l'année, sans le jour)
+	 * Modification de l'affichage de la date (juste le mois et l'annÃ©e, sans le jour)
 	 */
 	public static void changeAfficheDate(DatePicker datePicker) {
 		try {

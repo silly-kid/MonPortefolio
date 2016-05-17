@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import android.util.Log;
 
 /**
- * Classe métier contenant les informations des frais d'un mois
+ * Classe mÃ©tier contenant les informations des frais d'un mois
  *
  */
 public class FraisMois implements Serializable {
 
-	private Integer mois ; // mois concerné
-	private Integer annee ; // année concernée
-	private Integer etape ; // nombre d'étapes du mois
+	private Integer mois ; // mois concernï¿½
+	private Integer annee ; // annï¿½e concernï¿½e
+	private Integer etape ; // nombre d'ï¿½tapes du mois
 	private Integer km ; // nombre de km du mois
-	private Integer nuitee ; // nombre de nuitées du mois
+	private Integer nuitee ; // nombre de nuitï¿½es du mois
 	private Integer repas ; // nombre de repas du mois
 	private ArrayList<FraisHf> lesFraisHf ; // liste des frais hors forfait du mois
 	

@@ -3,7 +3,8 @@ package com.gsb.suividevosfrais;
 import java.io.Serializable;
 
 /**
- * Classe métier contenant la description d'un frais hors forfait
+ * Classe mÃ©tier contenant la description d'un frais hors forfait
+ * @author Flora Carriere
  *
  */
 public class FraisHf  implements Serializable {
