@@ -5,11 +5,11 @@
  * @author Flora Carriere
  */
 
-include("vues/v_sommaire.php");
-$action = $_REQUEST['action'];
+include("vues/v_sommaire.php"); //vue du sommaire
+$action = $_REQUEST['action']; //recupère action
 echo $action;
-$lesFichesFrais = $pdo->getFichesFraisValidees();
-include("vues/v_lstFicheFrais.php");
+$lesFichesFrais = $pdo->getFichesFraisValidees(); //récupèreFicheV
+include("vues/v_lstFicheFrais.php"); //vue ListeFicheF
 
 switch ($action) {
 	case 'voirFicheFrais':
@@ -31,7 +31,7 @@ switch ($action) {
 		$dateModif = $lesInfosFicheFrais['dateModif'];
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "readOnly='readOnly'";
-		if ((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
+		if ((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) { //si pas de F de F 
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
 			$km = $pdo->getFraiskm($idVisiteur, $mois);

@@ -15,6 +15,26 @@
  * @link       http://www.php.net/manual/fr/book.pdo.php
  */
 
+/**
+ * Infos :
+ *
+ * $_SESSION :  on y retrouve les variables de session. 
+ * Ce sont des variables qui restent stockées sur le serveur le temps de la présence d'un visiteur.
+ * isset :  Détermine si une variable est définie et est différente de NULL.
+ * @list  : Assigne des variables comme si elles étaient un tableau.
+ * explode  : Coupe une chaîne en segments.
+ * strlen  : Calcule la taille d'une chaîne.
+ * preg_match  : Effectue une recherche de correspondance avec une expression rationnelle standard.
+ * count : Compte tous les éléments d'un tableau ou quelque chose d'un objet.
+ * $_REQUEST : Variables de requête HTTP.
+ * $_GET : contient les données envoyées en paramètres dans l'URL.
+ * $_POST : contient les informations qui viennent d'être envoyées par un formulaire.
+ * trim  : Supprime les espaces (ou d'autres caractères) en début et fin de chaîne.
+ * substr : Retourne un segment de chaîne.
+ * empty : Détermine si une variable est vide.
+ * array : Crée un tableau.
+ */
+
 class PdoGsb{   		
       	private static $serveur='mysql:host=localhost';
       	private static $bdd='dbname=gsb_frais';   		
@@ -535,7 +555,7 @@ class PdoGsb{
  * 
 */
 	
-	public function getFraiskm($idVisiteur,$mois){
+	public function getFraiskm($idVisiteur,$mois){ //récupération qte km
 		$req = "select quantite from  lignefraisforfait
 		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'KM'";
 		$ligneResultat = PdoGsb::$monPdo->query($req);
@@ -544,7 +564,7 @@ class PdoGsb{
 		
 	}
 	
-	public function getVehicule($idVisiteur,$mois){
+	public function getVehicule($idVisiteur,$mois){ //recupération type veh
 		$req = "select quantite from  lignefraisforfait
 		where idvisiteur ='$idVisiteur' and mois = '$mois' and idFraisForfait = 'VEH'";
 		$ligneResultat = PdoGsb::$monPdo->query($req);

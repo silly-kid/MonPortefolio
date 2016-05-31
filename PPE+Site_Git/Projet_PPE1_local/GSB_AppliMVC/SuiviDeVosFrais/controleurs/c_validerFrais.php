@@ -11,7 +11,7 @@ $idVisiteur = $_SESSION['idVisiteur'];
 $tabVisiteurs = $pdo->getLesVisiteurs();
 
 switch ($action) {
-	case "selectionnerMois":
+	case "selectionnerMois": //selection du mois
 		$lesMois = [];
 		$tabVisiteurs = $pdo->getLesVisiteurs();
 		$idVisiteurChoisi = "";
@@ -20,16 +20,16 @@ switch ($action) {
 			$lesMois = $pdo->getLesMoisCloture($idVisiteurChoisi);
 			
 		}
-		/* Afin de s�lectionner par d�faut le dernier mois dans la zone de liste
-		** on demande toutes les cl�s, et on prend la premi�re,
-		** les mois �tant tri�s d�croissants
+		/* Afin de sélectionner par défaut le dernier mois dans la zone de liste
+		** on demande toutes les clés, et on prend la première,
+		** les mois étant triés décroissants
 		**/
 		$lesCles = array_keys( $lesMois );
 		$moisASelectionner = "";
 		include("vues/v_listeVisiteur.php");
 		break;
 	
-	case "voirEtatFrais":
+	case "voirEtatFrais": // etatfraisComptable
 		$leMois = $_REQUEST['lstMois'];
 		$_SESSION['leMois']=$leMois;
 		$idVisiteur = $_REQUEST['lstVisiteur'];
@@ -53,7 +53,7 @@ switch ($action) {
 		$dateModif = dateAnglaisVersFrancais($dateModif);
 		$readOnly = "";
 		$valider = 1;
-		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) {
+		if((empty($lesFraisForfait)) && (empty($lesFraisHorsForfait))) { //pas de F de F pour le mois
 			include("vues/v_pasDeFicheFrais.php");
 		} else {
 			$km = $pdo->getFraiskm($idVisiteur, $mois);
@@ -72,7 +72,7 @@ switch ($action) {
 				$vehicule1 = 0.67;
 			}
 			$resultat = $km[0] * $vehicule1;
-			include("vues/v_etatFraisComptable.php");
+			include("vues/v_etatFraisComptable.php"); //vue etat frais comptable
 			
 		}
 		break;
@@ -103,11 +103,11 @@ switch ($action) {
 		if (lesQteFraisValides($lesFrais)) {
 			$pdo->majFraisForfait($leVisiteur, $leMois, $lesFrais);
 		
-			ajouterErreur("les éléments forfaitisés on été modifiée!");
+			ajouterErreur("les éléments forfaitisés on été modifiée!"); //modification
 			$type = 1;
 			include("vues/v_erreurs.php");
 		} else {
-			ajouterErreur("Les valeurs des frais doivent être numériques");
+			ajouterErreur("Les valeurs des frais doivent être numériques"); //en cas d'erreur
 			include("vues/v_erreurs.php");
 		}
 		
@@ -116,7 +116,7 @@ switch ($action) {
 		$lesFraisForfait = $pdo->getLesFraisForfait($leVisiteur, $leMois);
 		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($leVisiteur, $leMois);
 		
-		include("vues/v_resultatModif.php");
+		include("vues/v_resultatModif.php"); //resultat des modifs
 		break;
 		
 	case "reportRefus":
@@ -126,11 +126,11 @@ switch ($action) {
 		$leMois = $_SESSION['leMois'];
 		$idVisiteur = $_SESSION['idVisiteur'];
 		echo $idVisiteur;
-		if($reportRefus == 'Refuser' && !preg_match("/REFUSE :/", $libelle)){
+		if($reportRefus == 'Refuser' && !preg_match("/REFUSE :/", $libelle)){ //FHF refusé
 			$pdo->majFraisHorsForfait($libelle, $id);
 			include("vues/v_refus.php");
 		}else{
-			if($reportRefus == 'Reporter'){
+			if($reportRefus == 'Reporter'){ //FHF reporté au mois suivant 
 				$pdo->reportFraisHorsForfait($id, $leMois, $idVisiteur);
 				include('vues/v_update.php');
 				
@@ -138,11 +138,11 @@ switch ($action) {
 		}
 		break;
 		
-	case "validFiche":
+	case "validFiche": //validation de la fiche 
 		$idVisiteur = $_SESSION['idVisiteur'];
 		echo $idVisiteur;
 		$mois = $_SESSION['leMois'];
-		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'VA');
+		$pdo->majEtatFicheFrais($idVisiteur, $mois, 'VA'); //passe en validé
 		$tabMontant = $pdo->getLesMontants();
 		$tabQuantites = $pdo->getLesQuantites($idVisiteur, $mois);
 		$montant = 0;

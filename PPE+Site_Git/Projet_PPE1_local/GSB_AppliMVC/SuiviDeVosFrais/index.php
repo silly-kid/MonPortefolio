@@ -1,17 +1,17 @@
 <?php
-require_once("include/fct.inc.php"); // contient toutes les fonctions
+require_once("include/fct.inc.php"); // contient les fonctions
 require_once ("include/class.pdogsb.inc.php"); // contient les méthodes
 include("vues/v_entete.php") ; // vues de l'entête
 
 session_start();
 $pdo = PdoGsb::getPdoGsb(); // base de donnèe
-$estConnecte = estConnecte();
+$estConnecte = estConnecte(); //test connection
 
-if(!isset($_REQUEST['uc']) || !$estConnecte){ // connexion
-     $_REQUEST['uc'] = 'connexion';
+if(!isset($_REQUEST['uc']) || !$estConnecte){ // verif
+     $_REQUEST['uc'] = 'connexion'; //connexion
 }	
 
-$uc = $_REQUEST['uc'];
+$uc = $_REQUEST['uc']; //récupération variable 'uc' 
 
 switch($uc){
 	case 'connexion':{

@@ -5,43 +5,43 @@
  * @author Flora Carriere
  */
 
-include("vues/v_sommaire.php");
-$action = $_REQUEST['action'];
-$idVisiteur = $_SESSION['idVisiteur'];
+include("vues/v_sommaire.php"); //vue du sommaire
+$action = $_REQUEST['action']; //recupère action
+$idVisiteur = $_SESSION['idVisiteur']; //recupère idVisiteur
 
 switch($action){
-	case 'selectionnerMois':{
-		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
+	case 'selectionnerMois':{ //selection du mois
+		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur); //recupère lesMoisDispo
 		// Afin de sélectionner par défaut le dernier mois dans la zone de liste
 		// on demande toutes les clés, et on prend la première,
 		// les mois étant triés décroissants
 		$lesCles = array_keys( $lesMois );
 		$moisASelectionner = $lesCles[0];
-		include("vues/v_listeMois.php");
+		include("vues/v_listeMois.php"); //vue de la liste des mois
 		break;
 	}
-	case 'voirEtatFrais':{
+	case 'voirEtatFrais':{ //voir etat frais
 		
-		$leMois = $_REQUEST['lstMois'];
-		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
+		$leMois = $_REQUEST['lstMois']; //recupère mois
+		$lesMois=$pdo->getLesMoisDisponibles($idVisiteur); //recupère lesMoisDispo
 		$moisASelectionner = $leMois;
-		include("vues/v_listeMois.php");
+		include("vues/v_listeMois.php"); //vue des mois 
 		
-		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$leMois);
-		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$leMois);
-		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois);
+		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$leMois); //frais Hf
+		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$leMois); //frais F
+		$lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$leMois); //ficheFrais
 		$numAnnee =substr( $leMois,0,4);
 		$numMois =substr( $leMois,4,2);
-		$libEtat = $lesInfosFicheFrais['libEtat'];
-		$montantValide = $lesInfosFicheFrais['montantValide'];
-		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
+		$libEtat = $lesInfosFicheFrais['libEtat']; //infoFicheFrais
+		$montantValide = $lesInfosFicheFrais['montantValide']; //montantvalidé
+		$nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs']; //nmb de justificatif
 		$dateModif =  $lesInfosFicheFrais['dateModif'];
 		$dateModif =  dateAnglaisVersFrancais($dateModif);
-		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois);
-		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois);
-		$km = $pdo->getFraiskm($idVisiteur, $mois);
-		$vehicule = $pdo->getVehicule($idVisiteur, $mois);
-		$vehicule1 = 0;
+		$lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$mois); //frais Hf
+		$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$mois); //frais F
+		$km = $pdo->getFraiskm($idVisiteur, $mois); //km
+		$vehicule = $pdo->getVehicule($idVisiteur, $mois); //type de veh
+		$vehicule1 = 0; //coef
 		
 		if($vehicule[0] == 1){
 			$vehicule1 = 0.52;
@@ -56,7 +56,8 @@ switch($action){
 			$vehicule1 = 0.67;
 		}
 		else{
-			echo "aucun vehicule type de vehicule choisi";
+			ajouterErreur("aucun type de vehicule choisi ou type non valide");
+			include("vues/v_erreurs.php");
 		}
 		$resultat = $km[0] * $vehicule1;
 		include("vues/v_etatFrais.php");
