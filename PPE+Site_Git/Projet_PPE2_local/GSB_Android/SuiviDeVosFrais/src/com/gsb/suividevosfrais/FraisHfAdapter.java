@@ -17,16 +17,28 @@ import android.widget.TextView;
 import android.widget.BaseAdapter;
 
 /**
- * Classe d'affichage du tableau de récapitulatif
+ * Classe d'affichage du tableau de récapitulatif des frais Hf
  * @author Flora Carriere
  *
  */
-public class FraisHfAdapter extends BaseAdapter {
+ 
+ /**
+  * INFOS :
+  *
+  * ViewHolder, holder :
+  *
+  * LayoutInflater :
+  *
+  * Context :
+  *
+  */
+  
+public class FraisHfAdapter extends BaseAdapter { // extends -> étendre une classe implements -> c'est la même chose mais pour une interface
 
-	ArrayList<FraisHf> lesFrais ; // liste des frais du mois
-	LayoutInflater inflater ;
-	Integer key ;  // annee et mois (cl� dans la liste)
-	Context context ; // contexte pour g�rer la s�rialisation
+	ArrayList<FraisHf> lesFrais ; // liste des frais Hf du mois
+	LayoutInflater inflater ; // ???
+	Integer key ;  // annee et mois (clé dans la liste)
+	Context context ; // contexte pour gérer la sérialisation
 	SupprClicListener supprlistener; //gestion des clics
 	
 	/**
@@ -53,7 +65,7 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * retourne l'item de la listview à un index précis
+	 * retourne l'item de la listview à un index précis en paramettre
 	 */
 	@Override
 	public Object getItem(int index) {
@@ -69,22 +81,22 @@ public class FraisHfAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * structure contenant les éléments d'une ligne
+	 * structure contenant les éléments d'une ligne Horsforfait
 	 */
 	private class ViewHolder {
-		TextView txtListJour ;
-		TextView txtListMontant ;
-		TextView txtListMotif ;
-		ImageView imgSupprimerLigne;
+		TextView txtListJour ; //jour
+		TextView txtListMontant ; //montant
+		TextView txtListMotif ; //motif
+		ImageView imgSupprimerLigne; //petite crois pour supprimer
 	}
 	
 	/**
-	 * Affichage dans la liste
+	 * Affichage dans la liste : a revoir 
 	 */
 	@Override
 	public View getView(int index, View convertView, ViewGroup parent) {
 		ViewHolder holder ;
-		if (convertView == null) {
+		if (convertView == null) { 
 			holder = new ViewHolder() ;
 			convertView = inflater.inflate(R.layout.layout_liste, null) ;
 			holder.txtListJour = (TextView)convertView.findViewById(R.id.txtListJour) ;
@@ -115,6 +127,6 @@ public class FraisHfAdapter extends BaseAdapter {
 	 *
 	 */
 	public interface SupprClicListener{
-		public abstract void onSupprClick(int index);
+		public abstract void onSupprClick(int index); //supprime un frais Hf à l'index passé en paramettre
 	}
 }

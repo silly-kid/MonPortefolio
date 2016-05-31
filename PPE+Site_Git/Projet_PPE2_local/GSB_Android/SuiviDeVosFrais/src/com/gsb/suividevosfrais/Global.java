@@ -20,6 +20,33 @@ import android.widget.ImageView;
  * @author Flora Carriere
  *
  */
+ 
+ /**
+  * INFOS :
+  *
+  * Hashtable : tableaux 
+  *
+  * field :  is a variable inside a class
+  *
+  * getClass :
+  *
+  * getDeclaredFields ():  returns an array of Field objects including public, 
+  * protected, default (package) access, and private fields, but excludes inherited fields.
+  *
+  * equals (): permet de tester l'égalité de deux objets d'un point de vue sémantique.
+  *
+  * setAccessible : This method has a boolen parameter flag, which indicates the new accessibility of any fields or methods.
+  *
+  * setVisibility : hide or show views.
+  *
+  * SecurityException : Thrown when a security manager check fails.
+  *
+  * IllegalArgumentException : Thrown to indicate that a method has been passed an illegal or inappropriate argument.
+  *
+  * IllegalAccessException : An IllegalAccessException is thrown when an application tries to reflectively create an instance.
+  *
+  */
+  
 public abstract class Global {
 
 	// tableau d'informations mémorisées
@@ -42,7 +69,7 @@ public abstract class Global {
 		            ((View) dayPicker).setVisibility(View.GONE);
 		        }
 		    }
-		} catch (SecurityException e) {
+		} catch (SecurityException e) { //en cas d'erreur 
 		    Log.d("ERROR", e.getMessage());
 		} catch (IllegalArgumentException e) {
 		    Log.d("ERROR", e.getMessage());
