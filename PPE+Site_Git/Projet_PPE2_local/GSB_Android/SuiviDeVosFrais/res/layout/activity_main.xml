@@ -128,16 +128,36 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingTop="10dp"
-            android:orientation="vertical" >
+            android:paddingTop="10dp">
 
-            <Button
-                android:id="@+id/cmdTransfert"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:background="@drawable/transfert" />
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="187dp"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/cmdTransfert"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/transfert"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/bLogout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/blogout"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
