@@ -2,6 +2,7 @@ package com.gsb.suividevosfrais;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.apache.http.client.ClientProtocolException;
@@ -154,35 +155,92 @@ public class MainActivity extends Activity {
      * Enregistrement du profil dans la base de donn?es distante
     */
     private void enregBdDistante() {
-        // cr?ation de l'objet d'acc?s ? distance avec ref?finition ? la vol?e de la m?thode onPostExecute
-        AccesHTTP accesDonnees = new AccesHTTP(){
-            @Override
-            protected void onPostExecute(Long result) {
-                // ret contient l'information r?cup?r?e
-                Log.d("retour du serveur", this.ret.toString()) ;
-            }
-        };
-        /*Integer annee;
-        Integer mois;
-        annee = ((DatePicker) findViewById(R.id.datEtape)).getYear();
-        mois = ((DatePicker) findViewById(R.id.datEtape)).getMonth() + 1;
-        Integer key = annee*100+mois;
-        // ajout des donn?es en param?tre
-        accesDonnees.addParam("op", "enreg");
-        accesDonnees.addParam("km",  Global.listFraisMois.get(key).getKm().toString());
-        accesDonnees.addParam("etape",  Global.listFraisMois.get(key).getEtape().toString());
-        accesDonnees.addParam("nuitee", Global.listFraisMois.get(key).getNuitee().toString());
-        accesDonnees.addParam("repas", Global.listFraisMois.get(key).getRepas().toString());;//*/
 
-        accesDonnees.addParam("op", "enreg");
-        accesDonnees.addParam("km",  "100");
-        accesDonnees.addParam("etape",  "ddddd");
-        accesDonnees.addParam("nuitee", "www");
-        accesDonnees.addParam("repas", "ssss");
-        // envoi
-        accesDonnees.execute("http://127.0.0.1/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/serveurcoach.php");
+        Enumeration<Integer> keyFraisMois = Global.listFraisMois.keys();
+
+        while(keyFraisMois.hasMoreElements()){
+
+            // création de l'objet d'accés ? distance avec ref?finition ? la volée de la méthode onPostExecute
+            AccesHTTP accesDonnees = new AccesHTTP(){
+                @Override
+                protected void onPostExecute(Long result) {
+                    // ret contient l'information récupérée
+                    Log.d("retour du serveur", this.ret.toString()) ;
+                }
+            };
+
+            Integer key = keyFraisMois.nextElement(); //récupère la clé courante de la liste
+            FraisMois fraisMois = Global.listFraisMois.get(key);
+
+            //ajout des donnees à envoyer
+
+            accesDonnees.addParam("op", "enreg");
+            accesDonnees.addParam("id", key.toString());
+            accesDonnees.addParam("km",  fraisMois.getKm().toString());
+            accesDonnees.addParam("etape",  fraisMois.getEtape().toString());
+            accesDonnees.addParam("nuitee", fraisMois.getNuitee().toString());
+            accesDonnees.addParam("repas", fraisMois.getRepas().toString());
+
+            //envoie
+            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+
+            engistreHfFraisMois(key.toString(), fraisMois);
+        }//end while
+
 
 
     }
-}
+    private void engistreHfFraisMois(String key, FraisMois fraisMois ){
+		supprHfbdd(key.toString(), fraisMois);//rajouté
+        for(int i=0; i<fraisMois.getLesFraisHf().size(); i++){
 
+            FraisHf fraisHf= fraisMois.getLesFraisHf().get(i);
+
+            // création de l'objet d'accés ? distance avec ref?finition ? la volée de la méthode onPostExecute
+            AccesHTTP accesDonnees = new AccesHTTP(){
+                @Override
+                protected void onPostExecute(Long result) {
+                    // ret contient l'information récupérée
+                    Log.d("retour du serveur", this.ret.toString()) ;
+                }
+            };
+
+            //ajout des donnees à envoyer
+
+            accesDonnees.addParam("op", "fraishf");
+            accesDonnees.addParam("id", key.toString());
+            accesDonnees.addParam("montant",  fraisHf.getMontant().toString());
+            accesDonnees.addParam("motif",  fraisHf.getMotif().toString());
+            accesDonnees.addParam("jour", fraisHf.getJour().toString());
+
+            //envoie
+            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+        }
+
+
+
+    }
+	
+	private void supprHfbdd(String key, FraisMois fraisMois) { //rajouté
+
+        for (int i = 0; i < fraisMois.getLesFraisHf().size(); i++) {
+
+            FraisHf fraisHf = fraisMois.getLesFraisHf().get(i);
+
+            // création de l'objet d'accés ? distance avec ref?finition ? la volée de la méthode onPostExecute
+            AccesHTTP accesDonnees = new AccesHTTP() {
+                @Override
+                protected void onPostExecute(Long result) {
+                    // ret contient l'information récupérée
+                    Log.d("retour du serveur", this.ret.toString());
+                }
+            };
+            accesDonnees.addParam("op", "supprHf");
+            accesDonnees.addParam("id", key.toString());
+
+            //envoie
+            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+        }
+    }
+
+}
