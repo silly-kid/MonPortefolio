@@ -3,7 +3,7 @@
 include "fonctions.php"; //fonction avec le fichier fonction.php
 if (isset($_REQUEST["op"])) {
 
-	if ($_REQUEST["op"]=="fraishf") {
+	if ($_REQUEST["op"]=="fraishf") { //enregistrement fraisHf
 		
 		$id = $_REQUEST["id"];
 		$montant = $_REQUEST["montant"];
@@ -17,13 +17,13 @@ if (isset($_REQUEST["op"])) {
 			echo $RequeteHf;
 			$req5 = $cnx->prepare($RequeteHf);
 			$req5->execute();
-			}
+			
 			
 		} catch (PDOException $e) {
 			print "Erreur !: " . $e->getMessage();
 			die();
 		}
-	}elseif ($_REQUEST["op"]=="enreg") {
+	}elseif ($_REQUEST["op"]=="enreg") { //enregistrement des fraisMois
 		
 		// récupération des paramètres en post
 		echo " ajout des paramettres";
@@ -60,14 +60,14 @@ if (isset($_REQUEST["op"])) {
 			print "Erreur !: " . $e->getMessage(); //en cas d'erreur 
 			die();
 		}
-	}elseif ($_REQUEST["op"]=="supprHf") {
+	}elseif ($_REQUEST["op"]=="supprHf") { //suppresion d'un frais Hf
 		
-		$id = $_REQUEST["id"];
+		$keyFrais = $_REQUEST["keyFrais"];
 		
 		
 		try {
 			$cnx = connexionPDO();
-			$RequeteHfsupp="DELETE FROM fraishf where id='".$id."' ;"; 
+			$RequeteHfsupp="DELETE * FROM fraishf where id='".$keyFrais."' ;"; 
 			echo $RequeteHfsupp;
 			$req4 = $cnx->prepare($RequeteHfsupp);
 			$req4->execute();
@@ -79,7 +79,7 @@ if (isset($_REQUEST["op"])) {
 		
 		
 		
-	}elseif ($_REQUEST["op"]=="login") {
+	}elseif ($_REQUEST["op"]=="login") { //connection login
 		
 		$login = $_REQUEST["login"];
 		$mdp = $_REQUEST["mdp"];

@@ -2,9 +2,11 @@ package com.gsb.suividevosfrais;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -42,6 +44,8 @@ import android.util.Log ;
 import java.util.Date;
 import java.text.SimpleDateFormat ;
 import java.text.ParseException;
+import java.util.List;
+
 import org.json.JSONArray ;
 import org.json.JSONException ;
 
@@ -191,7 +195,7 @@ public class MainActivity extends Activity {
 
     }
     private void engistreHfFraisMois(String key, FraisMois fraisMois ){
-		supprHfbdd(key.toString(), fraisMois);//rajouté
+		supprHfbdd(key.toString());//rajouté
         for(int i=0; i<fraisMois.getLesFraisHf().size(); i++){
 
             FraisHf fraisHf= fraisMois.getLesFraisHf().get(i);
@@ -221,11 +225,9 @@ public class MainActivity extends Activity {
 
     }
 	
-	private void supprHfbdd(String key, FraisMois fraisMois) { //rajouté
+	private void supprHfbdd(String keyFraisMois) { //rajouté
 
-        for (int i = 0; i < fraisMois.getLesFraisHf().size(); i++) {
-
-            FraisHf fraisHf = fraisMois.getLesFraisHf().get(i);
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 
             // création de l'objet d'accés ? distance avec ref?finition ? la volée de la méthode onPostExecute
             AccesHTTP accesDonnees = new AccesHTTP() {
@@ -236,11 +238,11 @@ public class MainActivity extends Activity {
                 }
             };
             accesDonnees.addParam("op", "supprHf");
-            accesDonnees.addParam("id", key.toString());
+            accesDonnees.addParam("keyFrais", keyFraisMois);
 
             //envoie
             accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
         }
-    }
+
 
 }

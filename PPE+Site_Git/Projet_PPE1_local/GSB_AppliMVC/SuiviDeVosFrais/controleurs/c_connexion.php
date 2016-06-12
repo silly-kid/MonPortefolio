@@ -10,7 +10,7 @@ if(!isset($_REQUEST['action'])){
 }
 $action = $_REQUEST['action']; //recupère action
 switch($action){
-	case 'demandeConnexion':{
+	case 'demandeConnexion':{ //demande de connection
 		include("vues/v_connexion.php"); //vue pour se connecter
 		break;
 	}
@@ -19,22 +19,22 @@ switch($action){
 		$mdp = $_REQUEST['mdp']; //recupération du mot de passe
 		
 		//crypter mdp
-		$texte = trim($_POST['mdp']);
+		$texte = trim($_POST['mdp']);//recupère le mdp
 		$texte1 = SHA1('$mdp'); //cryptage du mdp en SHA1
 		$mdp = $texte1;
 		if($mdp){
-			echo "  le mdp a bien ete crypté  ";
-		}else echo "  error : problème mdp non crypté  ";
+			echo "  le mdp a bien ete crypté  "; //si tout s'estc'est bien passé
+		}else echo "  error : problème mdp non crypté  "; //en cas de pb
 					
 		$pdo->majCryptMdp($login, $mdp, $texte1); //envoie du mdp crypté dans bdd	     
 		
 		 
-		$visiteur = $pdo->getInfosVisiteur($login,$mdp); //recupération des infos
+		$visiteur = $pdo->getInfosVisiteur($login,$mdp); //recupération des infos du visiteurs
 	
-		if(!is_array( $visiteur)) { //en cas d'erreur
+		if(!is_array( $visiteur)) { //en cas d'erreur, si les infos visiteurs sont vide
 			ajouterErreur("Login ou mot de passe incorrect");//message d'erreur
 			include("vues/v_erreurs.php"); //vue des erreurs
-			include("vues/v_connexion.php"); //vue de connexion
+			include("vues/v_connexion.php"); //vue de connexion pour recommencer
 		}
 		else if(is_array( $visiteur)&& $texte1 == $mdp){ //connexion avec le mdp crypté et les infos ok 
 			$id = $visiteur['id'];

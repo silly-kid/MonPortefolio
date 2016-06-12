@@ -56,9 +56,9 @@
         </div>
     </form>
 </div>
-<script type="text/javascript">
+<script type="text/javascript"> //quand un visiteur est choisi, on propose les mois
 
-	function chargerLesMois(obj){
+	function chargerLesMois(obj){ //chargement des mois en fonction du visiteur choisi
 		document.getElementById("idVisiteurChoisi").value = obj.value;
 		document.getElementById("idFormVisiteur").submit();
 	}

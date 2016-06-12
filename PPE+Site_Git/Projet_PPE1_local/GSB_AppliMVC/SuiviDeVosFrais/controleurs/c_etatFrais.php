@@ -16,7 +16,7 @@ switch($action){
 		// on demande toutes les clés, et on prend la première,
 		// les mois étant triés décroissants
 		$lesCles = array_keys( $lesMois );
-		$moisASelectionner = $lesCles[0];
+		$moisASelectionner = $lesCles[0];//premiere clés
 		include("vues/v_listeMois.php"); //vue de la liste des mois
 		break;
 	}
