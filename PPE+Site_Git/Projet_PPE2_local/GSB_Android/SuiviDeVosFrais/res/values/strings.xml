@@ -12,5 +12,6 @@
     <string name="title_activity_hf_recap">Suivi de vos frais</string>
     <string name="title_activity_layout_liste">LayoutListe</string>
     <string name="title_activity_rep">RepActivity</string>
+	<string name="title_login">Login</string>
 
 </resources>

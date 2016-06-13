@@ -1,4 +1,3 @@
-<!-- <script> alert("ddddddd"); </script> -->
 <?php
 include "fonctions.php"; //fonction avec le fichier fonction.php
 if (isset($_REQUEST["op"])) {
@@ -60,14 +59,15 @@ if (isset($_REQUEST["op"])) {
 			print "Erreur !: " . $e->getMessage(); //en cas d'erreur 
 			die();
 		}
-	}elseif ($_REQUEST["op"]=="supprHf") { //suppresion d'un frais Hf
+	}elseif ($_REQUEST["op"]=="supprhf") { //suppresion d'un frais Hf
 		
 		$keyFrais = $_REQUEST["keyFrais"];
 		
 		
+		
 		try {
 			$cnx = connexionPDO();
-			$RequeteHfsupp="DELETE * FROM fraishf where id='".$keyFrais."' ;"; 
+			$RequeteHfsupp="DELETE FROM fraishf where id='".$keyFrais."' ;"; 
 			echo $RequeteHfsupp;
 			$req4 = $cnx->prepare($RequeteHfsupp);
 			$req4->execute();
@@ -83,23 +83,16 @@ if (isset($_REQUEST["op"])) {
 		
 		$login = $_REQUEST["login"];
 		$mdp = $_REQUEST["mdp"];
-		$id = $_REQUEST["id"];
 		
 		try {
 			$cnx = connexionPDO(); //connection
-			$RequeteVerifSaisie="SELECT * FROM visiteur where login='".$login."' ";
+			$RequeteVerifSaisie="SELECT * FROM visiteur where login='".$login."' and mdp='".$mdp."' ";
 			$req1= $cnx->prepare($RequeteVerifSaisie);
 			$req1->execute();
-			$nbIdfrais = $req1->fetch();
-			if (!empty($nbIdfrais["id"])){
-				$RegMessage="Login ou mot de passe incorect"; 
-				echo $RequeteMessage;
-				
-			}else{
-				$Requetelogin="Connection ok";
-				echo "Ma requete : ".$Requetelogin;
-				
-			}
+			$resultat = $req1->fetch();
+			echo $resultat["login"];
+			
+			
 		}catch (PDOException $e) {
 			print "Erreur !: " . $e->getMessage(); //en cas d'erreur 
 			die();

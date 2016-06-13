@@ -59,6 +59,7 @@ function connecterComptable($id,$nom,$prenom){
 function deconnecter(){
 	session_destroy();
 }
+
 /**
  * Transforme une date au format français jj/mm/aaaa vers le format anglais aaaa-mm-jj
  
@@ -69,6 +70,7 @@ function dateFrancaisVersAnglais($maDate){
 	@list($jour,$mois,$annee) = explode('/',$maDate);
 	return date('Y-m-d',mktime(0,0,0,$mois,$jour,$annee));
 }
+
 /**
  * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa 
  
@@ -80,6 +82,7 @@ function dateAnglaisVersFrancais($maDate){
    $date="$jour"."/".$mois."/".$annee;
    return $date;
 }
+
 /**
  * retourne le mois au format aaaamm selon le jour dans le mois
  
@@ -121,6 +124,7 @@ function estTableauEntiers($tabEntiers) {
 	}
 	return $ok;
 }
+
 /**
  * Vérifie si une date est inférieure d'un an à la date actuelle
  
@@ -135,6 +139,7 @@ function estDateDepassee($dateTestee){
 	@list($jourTeste,$moisTeste,$anneeTeste) = explode('/',$dateTestee);
 	return ($anneeTeste.$moisTeste.$jourTeste < $AnPasse); 
 }
+
 /**
  * Vérifie la validité du format d'une date française jj/mm/aaaa 
  
@@ -169,6 +174,7 @@ function estDateValide($date){
 function lesQteFraisValides($lesFrais){
 	return estTableauEntiers($lesFrais);
 }
+
 /**
  * Vérifie la validité des trois arguments : la date, le libellé du frais et le montant 
  
@@ -203,6 +209,7 @@ function valideInfosFrais($dateFrais,$libelle,$montant){
 			ajouterErreur("Le champ montant doit être numérique");
 		}
 }
+
 /**
  * Ajoute le libellé d'une erreur au tableau des erreurs 
  
@@ -214,6 +221,7 @@ function ajouterErreur($msg){
 	} 
    $_REQUEST['erreurs'][]=$msg;
 }
+
 /**
  * Retoune le nombre de lignes du tableau des erreurs 
  
@@ -227,7 +235,12 @@ function nbErreurs(){
 	   return count($_REQUEST['erreurs']);
 	}
 }
-	
+
+/**
+ * Retoune les 6 dernier Mois
+
+ * @return tableau des 6 dernier Mois
+ */	
 function getSixDernierMois() {
 	$mois = date("m") + 1;
 	$annee = date("Y");

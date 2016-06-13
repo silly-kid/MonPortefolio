@@ -11,6 +11,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import android.os.Bundle;
@@ -65,6 +66,7 @@ public class MainActivity extends Activity {
         cmdMenu_clic(((Button)findViewById(R.id.cmdEtape)), EtapeActivity.class); //Activit? Frais forfait etape
         cmdMenu_clic(((Button)findViewById(R.id.cmdHf)), HfActivity.class) ; //Activit? Frais Hforfait 
         cmdMenu_clic(((Button)findViewById(R.id.cmdHfRecap)), HfRecapActivity.class) ; //Activit? Frais Hforfait recapitulatif
+        cmdMenu_clic(((Button)findViewById(R.id.bLogout)), LoginActivity.class) ;
         cmdTransfert_clic() ;
     }
 
@@ -117,45 +119,6 @@ public class MainActivity extends Activity {
 	//test tache 3
 
     /**
-     * R?cup?ration de la derni?re mesure enregistr?e dans la base distante
-    */
-    private void recupLastProfilDistant() {
-        // cr?ation de l'objet d'acc?s ? distance avec ref?finition ? la vol?e de la m?thode onPostExecute
-        AccesHTTP accesDonnees = new AccesHTTP(){
-            @Override
-            protected void onPostExecute(Long result) {
-                Integer km ;
-                Integer etape ;
-                Integer nuitee ;
-                Integer repas ;
-                try {
-                    // ret contient l'information r?cup?r?e
-                    JSONArray tabJson = new JSONArray(this.ret);
-                    // test si on a r?cup?r? quelque chose
-                    if (tabJson.length()!=0) {
-                        // dans le cas pr?sent, un seul tuple r?cup?r?
-                        int i = 0 ;
-                        km = Integer.parseInt(tabJson.getJSONObject(i).getString("km")) ;
-                        etape = Integer.parseInt(tabJson.getJSONObject(i).getString("etape")) ;
-                        nuitee = Integer.parseInt(tabJson.getJSONObject(i).getString("nuitee")) ;
-                        repas = Integer.parseInt(tabJson.getJSONObject(i).getString("repas")) ;
-                        // valorisation des objets graphiques avec les informations r?cup?r?es
-                        ((EditText) findViewById(R.id.txtKm)).setText(km.toString());
-                        ((EditText) findViewById(R.id.txtEtape)).setText(etape.toString());
-                        ((EditText) findViewById(R.id.txtNuitee)).setText(nuitee.toString());
-                        ((EditText) findViewById(R.id.txtRep)).setText(repas.toString());
-
-                    }
-                }catch (JSONException e){
-                    Log.d("log","pb decodage JSON "+e.toString());
-                }
-            }
-        };
-        accesDonnees.addParam("op", "recup");
-        accesDonnees.execute("http://localhost/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/serveurcoach.php");
-    }
-
-    /**
      * Enregistrement du profil dans la base de donn?es distante
     */
     private void enregBdDistante() {
@@ -186,7 +149,7 @@ public class MainActivity extends Activity {
             accesDonnees.addParam("repas", fraisMois.getRepas().toString());
 
             //envoie
-            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+            accesDonnees.execute("http://10.0.2.2//Projet_PPE2_local/GSB_Android/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
 
             engistreHfFraisMois(key.toString(), fraisMois);
         }//end while
@@ -195,7 +158,7 @@ public class MainActivity extends Activity {
 
     }
     private void engistreHfFraisMois(String key, FraisMois fraisMois ){
-		supprHfbdd(key.toString());//rajouté
+		supprHfbdd(key);//rajouté
         for(int i=0; i<fraisMois.getLesFraisHf().size(); i++){
 
             FraisHf fraisHf= fraisMois.getLesFraisHf().get(i);
@@ -218,7 +181,7 @@ public class MainActivity extends Activity {
             accesDonnees.addParam("jour", fraisHf.getJour().toString());
 
             //envoie
-            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+            accesDonnees.execute("http://10.0.2.2//Projet_PPE2_local/GSB_Android/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
         }
 
 
@@ -227,7 +190,6 @@ public class MainActivity extends Activity {
 	
 	private void supprHfbdd(String keyFraisMois) { //rajouté
 
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 
             // création de l'objet d'accés ? distance avec ref?finition ? la volée de la méthode onPostExecute
             AccesHTTP accesDonnees = new AccesHTTP() {
@@ -237,11 +199,11 @@ public class MainActivity extends Activity {
                     Log.d("retour du serveur", this.ret.toString());
                 }
             };
-            accesDonnees.addParam("op", "supprHf");
+            accesDonnees.addParam("op", "supprhf");
             accesDonnees.addParam("keyFrais", keyFraisMois);
 
             //envoie
-            accesDonnees.execute("http://10.0.2.2/PPE2_test/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
+            accesDonnees.execute("http://10.0.2.2//Projet_PPE2_local/GSB_Android/SuiviDeVosFrais/SuivieFraisBdd/connection_bdd.php");
         }
 
 
