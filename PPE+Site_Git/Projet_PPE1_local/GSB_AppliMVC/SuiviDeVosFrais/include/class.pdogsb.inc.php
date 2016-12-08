@@ -469,7 +469,7 @@ class PdoGsb{
 	}
 	
 /**
- * Essaye de crypter mdp 
+ * Envoie du mdp crypté dans la base de donnée
  * 
  */	
 	public function majCryptMdp($login, $mdp, $texte1) {
@@ -482,6 +482,13 @@ class PdoGsb{
 	public function getInfosmdp($login) {
 		$req = "select mdp from visiteur where visiteur.login = '$login'";
 		PdoGsb :: $monPdo -> exec ($req);
+	}
+	
+	public function getTentative($login) {
+		$req = "select tentative from visiteur where visiteur.login = '$login'";
+		$tentative = PdoGsb::$monPdo->query($req);
+		$fetch = $tentative->fetch();
+		return $fetch;
 	}
 	
 	
