@@ -1,0 +1,246 @@
+/*!
+ * Création Carriere Flora.
+ * Bases responsive 
+ */
+ 
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+ 
+ body {
+	width: auto;
+	height: auto;
+
+	font-size: 100%;
+	
+	padding: 0 0 0 0px;
+	margin: 0 0 0 0px;
+}
+
+@media screen and (max-width: 480px) {
+      body {
+        font-size: 90%;
+      }
+    }
+
+@media screen and (min-width: 1000px) {
+	  body {
+        font-size: 110%;
+      }
+    }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+h1{
+	margin: .67em 0;
+	font-size: 10vw 10vh;
+	font-family: inherit;
+	font-weight: 50;
+	line-height: 1.1;
+	color: inherit;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	
+	
+}
+
+p{
+	margin: 0 0 10px;
+	word-wrap: break-word;
+	
+}
+
+/*!
+ * Le header. 
+ */
+
+.header{
+	
+	width: auto;
+	height: auto;
+} 
+
+/*!
+ * Le menu principale. 
+ */ 
+
+
+.menu_principale {
+	
+	 width: 100%;
+    margin: auto;
+	
+}
+ 
+.menu_principale ul {
+    list-style-type: none;
+    margin: 9px; /*Espace en haut*/
+    padding: 9px; /*Esapace a gauche*/
+    overflow: hidden;
+    background-color: transparent; /*Couleur du fond*/
+	
+	position: fixed; /*Menu fixe suit le scroll*/
+	
+	top: 0;
+}
+
+.menu_principale li {
+	
+	display: inline-block;
+	
+	margin-left: auto;
+    margin-right: auto;
+	
+}
+
+.menu_principale li a {
+    display: block; /*En block*/
+    color: white; /*Couleur du texte*/
+    
+    padding: 25px 25px 25px 25px; /*Taille du menu*/
+	margin: 1px 20px 20px 0px;
+	
+    text-decoration: none;
+	font-size: 20px; /*Taille du texte*/
+	font-style: oblique;
+	font-weight: bold;
+	
+	
+	
+	
+}
+
+.menu_principale li a:hover {
+    border-bottom:  3px white groove;
+	color: white
+	
+}
+
+.active {
+    
+	border-bottom:  3px white groove;
+	
+}
+
+
+/*!
+ * Image principale. 
+ */
+
+/*div{
+	background-size: cover;
+	-webkit-background-size: cover;
+	min-height: 550px;
+	background-repeat: no-repeat;
+}*/
+
+div{
+	 width: auto;
+     height: auto;
+	 max-width: 100%;
+	 background-repeat: no-repeat;
+     background-size: 100% 100%;
+	 
+}
+
+
+/*!
+ * Titre. 
+ */
+ 
+ .titre{
+	 color:white;
+	 text-align: center;
+	 font-size: 30px;
+	 font-Family: Arial;
+	 padding: 230px;
+	 margin: auto;
+ }
+
+/*!
+ * La section principale. 
+ */ 
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  
+} 
+ 
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col{
+	 position: relative;
+	 min-height: 1px;
+	 padding-right: 1px;
+	 padding-left: 150px;
+	 
+	 width: 100%;
+	 word-wrap: break-word;
+}
+ 
+
+
+/*!
+ * Le footer. 
+ */
+
+.footer{
+	
+	width: auto;
+	height: auto;
+	background-color: #CE32A9;
+}

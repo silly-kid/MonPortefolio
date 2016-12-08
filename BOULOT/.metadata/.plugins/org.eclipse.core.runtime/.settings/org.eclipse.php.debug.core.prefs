@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+org.eclipse.php.debug.core.xdebug_arrayDepth=3
+org.eclipse.php.debug.core.xdebug_capturestderr=1
+org.eclipse.php.debug.core.xdebug_capturestdout=1
+org.eclipse.php.debug.core.xdebug_children=51
+org.eclipse.php.debug.core.xdebug_data=1024
+org.eclipse.php.debug.core.xdebug_idekey=
+org.eclipse.php.debug.core.xdebug_multisession=true
+org.eclipse.php.debug.core.xdebug_port=9000
+org.eclipse.php.debug.core.xdebug_proxy=
+org.eclipse.php.debug.core.xdebug_remotesession=1
+org.eclipse.php.debug.core.xdebug_showSuperGlobals=true
+org.eclipse.php.debug.core.xdebug_useproxy=false
+org.eclipse.php.debug.coreoutput_encoding=UTF-8
+org.eclipse.php.debug.corestop_at_first_line_string=true
+org.eclipse.php.debug.coretransfer_encoding=UTF-8

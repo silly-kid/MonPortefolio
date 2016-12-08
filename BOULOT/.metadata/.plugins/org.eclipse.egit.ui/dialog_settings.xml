@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\Jean-Charles Rochet\Documents\BOULOT\.git">
+			<item value="false"/>
+			<item value="silly-kid &lt;flo_fun31@hotmail.fr&gt;"/>
+			<item value="envoie dossier boulot"/>
+			<item value="silly-kid &lt;flo_fun31@hotmail.fr&gt;"/>
+			<item value="0000000000000000000000000000000000000000"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item value="500,500" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="true" key="sortItemState"/>
+		<item value="500,500" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+	</section>
+</section>
